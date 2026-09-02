@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTEC 11NC — Lernmaterialien · Übersicht</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #01579b;
+  --primary-light: #0288d1;
+  --primary-bg: #e1f5fe;
+  --text: #212121;
+  --text-light: #555;
+  --bg: #f5f5f5;
+  --card-bg: #fff;
+  --shadow: 0 2px 8px rgba(0,0,0,0.12);
+  --shadow-hover: 0 6px 20px rgba(0,0,0,0.18);
+  --radius: 14px;
+  --transition: 0.25s ease;
+}
+body { font-family: system-ui, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+header { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; padding: 2.4rem 1rem 2rem; text-align: center; }
+header h1 { font-size: 1.9rem; margin-bottom: 0.4rem; }
+header p { opacity: 0.93; font-size: 0.98rem; max-width: 660px; margin: 0 auto; }
+.chips { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+.chip { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); padding: 0.25rem 0.7rem; border-radius: 999px; font-size: 0.8rem; }
+
+main { max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem 1rem; }
+
+.intro { background: var(--primary-bg); border-left: 4px solid var(--primary); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.6rem; font-size: 0.95rem; color: var(--text-light); }
+.intro b { color: var(--primary); }
+
+.section-title { font-size: 1.05rem; font-weight: 700; color: var(--text-light); margin: 1.9rem 0 0.9rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e0e0e0; display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.section-title:first-of-type { margin-top: 0; }
+.section-title .sub { font-size: 0.8rem; font-weight: 600; color: #90a4ae; text-transform: none; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.1rem; }
+
+.tile { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.3rem 1.4rem; border-top: 5px solid var(--accent, var(--primary)); transition: var(--transition); position: relative; }
+.tile:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+.tile .icon { font-size: 2.1rem; line-height: 1; margin-bottom: 0.6rem; }
+.tile h2 { font-size: 1.15rem; color: var(--text); margin-bottom: 0.35rem; }
+.tile p { font-size: 0.88rem; color: var(--text-light); flex: 1; }
+.tile .tag { display: inline-block; align-self: flex-start; margin-top: 0.8rem; font-size: 0.72rem; font-weight: 700; border-radius: 999px; padding: 0.18rem 0.7rem; background: var(--primary-bg); color: var(--primary); }
+.tile .arrow { position: absolute; bottom: 1.2rem; right: 1.3rem; font-size: 1.1rem; color: var(--accent, var(--primary)); opacity: 0; transition: var(--transition); }
+.tile:hover .arrow { opacity: 1; transform: translateX(3px); }
+
+/* Akzentfarben pro Thema */
+.t-grundlagen { --accent: #0277bd; }
+.t-grundlagen .tag { background:#e1f5fe; color:#0277bd; }
+.t-schaltung  { --accent: #2e7d32; }
+.t-schaltung .tag { background:#e8f5e9; color:#2e7d32; }
+.t-messen     { --accent: #6a1b9a; }
+.t-messen .tag { background:#f3e5f5; color:#6a1b9a; }
+.t-sicherheit { --accent: #c62828; }
+.t-sicherheit .tag { background:#ffebee; color:#c62828; }
+.t-quiz       { --accent: #3949ab; }
+.t-quiz .tag { background:#e8eaf6; color:#3949ab; }
+.t-liste      { --accent: #ef6c00; }
+.t-liste .tag { background:#fff3e0; color:#ef6c00; }
+
+footer { text-align: center; color: var(--text-light); font-size: 0.82rem; padding: 2.5rem 1rem 3rem; }
+
+@media (max-width: 600px) {
+  header h1 { font-size: 1.5rem; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ UTEC 11NC — Lernmaterialien</h1>
+  <p>Umweltschutztechnik · 11. Klasse · Arbeitsblätter und interaktive Materialien zur Elektrotechnik</p>
+  <div class="chips">
+    <span class="chip">🧰 Rastersteckplatte · Multimeter · Taschenrechner</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="intro">
+    Willkommen! Hier findet ihr die Materialien aus dem UTEC-Unterricht — sortiert nach Themen.
+    Ihr könnt die Arbeitsblätter jederzeit herunterladen und nachlesen, auch wenn ihr mal gefehlt habt. 💡
+  </div>
+
+  <div class="section-title">🔌 Grundlagen der Elektrotechnik <span class="sub">Quartal 1</span></div>
+  <div class="grid">
+
+    <a class="tile t-grundlagen" href="20260903_AB_Steckbrett_Fuehrerschein.pdf">
+      <span class="icon">🪛</span>
+      <h2>Steckbrett-Führerschein</h2>
+      <p>Sicherheitsregeln, Knotenprinzip der Rastersteckplatte, Fehlerdiagnose an vier Aufbauten und eine erste U-I-Messreihe (PDF).</p>
+      <span class="tag">Arbeitsblatt · Aufbau &amp; Messen</span>
+      <span class="arrow">→</span>
+    </a>
+
+  </div>
+
+</main>
+
+<footer>
+  Lore-Lorentz-Schule Düsseldorf · Umweltschutztechnik 11NC · Schuljahr 2026/27
+</footer>
+
+</body>
+</html>
