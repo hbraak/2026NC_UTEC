@@ -92,6 +92,7 @@
   <a href="#a3">Aufgabe 3</a>
   <a href="#a4">Aufgabe 4</a>
   <a href="#a5">Aufgabe 5</a>
+  <a href="#a7">Aufgabe 6</a>
   <a href="#a6">Hausaufgabe</a>
 </div>
 
@@ -587,7 +588,113 @@
   </details>
 </section>
 
-<!-- ================= AUFGABE 6 (HAUSAUFGABE) ================= -->
+<!-- ================= AUFGABE 6 ================= -->
+<section id="a7">
+  <h2>Aufgabe 6 — Wie viel steckt in einer Powerbank?</h2>
+  <div class="frage">10000&#8239;mAh bei 3,7&#8239;V: Wie viele Wh sind das, wie oft lädt sie ein Handy, und was kostet eine Ladung?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Auf der Powerbank steht groß <strong>10000&#8239;mAh</strong> — und darunter klein
+      <strong>3,7&#8239;V</strong>. Die Zahl mit dem „h“ sieht nach Energie aus, ist aber keine:
+      mAh ist <em>Strom mal Zeit</em>, also nur eine <strong>Ladungsmenge</strong>. Erst wenn die
+      Spannung dazukommt, wird eine Energie daraus.</p>
+      <p>Schau dir die Formel <em>W</em> = <em>U</em> &middot; <em>I</em> &middot; <em>t</em> an
+      und überleg: Welcher Teil davon steckt in der Angabe „10000&#8239;mAh“? Und was fehlt noch?</p>
+      <p>Für Teil&nbsp;b): Wenn du weißt, wie viel Energie in der Powerbank steckt und wie viel
+      in einen Handyakku passt — was musst du dann mit den beiden Zahlen machen?</p>
+      <p>Für Teil&nbsp;c) brauchst du wieder den Preis pro kWh. In welcher Einheit muss deine
+      Energie also stehen, bevor du multiplizierst?</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Ansatz</span></summary>
+    <div class="inhalt">
+      <p><strong>Zuerst mAh in Ah umrechnen</strong> — milli heißt geteilt durch 1000:</p>
+      <div class="formel">
+        10000&#8239;mAh = 10000 &frasl; 1000 = <strong>10&#8239;Ah</strong>
+      </div>
+
+      <p>In der Angabe „10&#8239;Ah“ steckt schon <em>I</em>&#8239;&middot;&#8239;<em>t</em>
+      zusammen drin. Die Energieformel wird damit ganz kurz:</p>
+      <div class="formel">
+        <em>W</em> = <em>U</em> &middot; <em>I</em> &middot; <em>t</em>
+        = <em>U</em> &middot; (<em>I</em> &middot; <em>t</em>)<br>
+        <em>W</em> in Wh = <em>U</em> in V &middot; Ladung in Ah
+      </div>
+      <div class="merk"><strong>Merksatz:</strong> <strong>Volt &middot; Amperestunden = Wattstunden.</strong>
+      Deshalb steht auf vielen Powerbanks zusätzlich klein eine Wh-Angabe — genau diese Zahl.</div>
+
+      <table class="eng">
+        <tr><th class="lbl">Angabe</th><th>bedeutet</th><th>Einheit</th></tr>
+        <tr><td class="lbl">10000&#8239;mAh</td><td>Ladung (<em>I</em> &middot; <em>t</em>)</td><td>Ah</td></tr>
+        <tr><td class="lbl">3,7&#8239;V</td><td>Zellenspannung</td><td>V</td></tr>
+        <tr><td class="lbl">beides mal</td><td>Energie</td><td>Wh</td></tr>
+      </table>
+
+      <p><strong>b)</strong> Rechne den Handyakku genauso in Wh um und teile dann:</p>
+      <div class="formel">
+        Anzahl = Energie der Powerbank &frasl; Energie des Handyakkus
+      </div>
+
+      <p><strong>c)</strong> Wh in kWh: durch 1000 teilen. Dann wie in Aufgabe&nbsp;5:</p>
+      <div class="formel">
+        Kosten = Energie in kWh &middot; 0,35&#8239;&euro;/kWh
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechenweg</span></summary>
+    <div class="inhalt">
+      <p><strong>a) Energieinhalt der Powerbank</strong></p>
+      <div class="formel">
+        10000&#8239;mAh = <strong>10&#8239;Ah</strong><br>
+        <em>W</em> = <em>U</em> &middot; <em>I</em> &middot; <em>t</em>
+        = 3,7&#8239;V &middot; 10&#8239;Ah = <strong>37&#8239;Wh</strong><br>
+        37&#8239;Wh = 37 &frasl; 1000 = <strong>0,037&#8239;kWh</strong>
+      </div>
+      <div class="merk">Dreh mal eine Powerbank um: Neben „10000&#8239;mAh“ steht oft klein
+      „37&#8239;Wh“. Du hast gerade nachgerechnet, wo diese Zahl herkommt.</div>
+
+      <p><strong>b) Wie oft lädt sie das Handy voll?</strong></p>
+      <p>Erst den Handyakku in Wh umrechnen: 3000&#8239;mAh = 3&#8239;Ah</p>
+      <div class="formel">
+        <em>W</em><sub>Handy</sub> = 3,7&#8239;V &middot; 3&#8239;Ah = <strong>11,1&#8239;Wh</strong>
+      </div>
+      <div class="formel">
+        Anzahl = 37&#8239;Wh &frasl; 11,1&#8239;Wh = 3,33… &asymp; <strong>3,3-mal</strong>
+      </div>
+      <div class="warn"><strong>Aber:</strong> In der Praxis schaffst du nur etwa
+      <strong>2 Ladungen</strong>. Die Powerbank muss ihre 3,7&#8239;V erst auf die
+      5&#8239;V der USB-Buchse hochsetzen, und auch im Handy geht beim Laden Energie als
+      Wärme verloren. Rund ein Drittel bleibt unterwegs liegen.</div>
+
+      <p><strong>c) Kosten für eine volle Ladung an der Steckdose</strong></p>
+      <div class="formel">
+        Kosten = 0,037&#8239;kWh &middot; 0,35&#8239;&euro;/kWh
+        = 0,01295&#8239;&euro; &asymp; <strong>0,013&#8239;&euro;</strong> &asymp; gut 1&#8239;Cent
+      </div>
+
+      <p><strong>Antwortsatz:</strong> In der Powerbank stecken 37&#8239;Wh, also 0,037&#8239;kWh.
+      Rechnerisch reicht das für 3,3 Handyladungen, praktisch für etwa 2. Einmal volltanken
+      kostet rund 1&#8239;Cent.</p>
+
+      <div class="merk"><strong>Jetzt weiterdenken:</strong> Vergleiche das mit der
+      Hausaufgabe — ein einziges Standby-Gerät verbraucht im Jahr 26,28&#8239;kWh. Das sind
+      über <strong>700 Powerbank-Ladungen</strong>. Die kleine Powerbank ist energetisch
+      ein Fliegenschiss, das vergessene Netzteil nicht.</div>
+      <div class="warn"><strong>Häufiger Fehler:</strong> „10000&#8239;mAh“ direkt als Energie
+      benutzen und die 3,7&#8239;V weglassen. Ohne Spannung ist eine mAh-Angabe wertlos — zwei
+      Akkus mit gleicher mAh-Zahl, aber verschiedener Spannung haben völlig verschiedene
+      Energieinhalte.</div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= HAUSAUFGABE ================= -->
 <section id="a6">
   <h2>Hausaufgabe — Standby ein ganzes Jahr</h2>
   <div class="frage">3&#8239;W dauerhaft, 24&#8239;Stunden am Tag, 365&#8239;Tage: Wie viel kWh und was kostet das?</div>
