@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilfen: Elektrische Leistung und Energie | UTEC 11NC</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#1e293b;
+       line-height:1.6;padding:16px 14px 60px;-webkit-text-size-adjust:100%}
+  .wrap{max-width:680px;margin:0 auto}
+  header{background:#fff;border-radius:15px;padding:22px 20px;margin-bottom:18px;
+         box-shadow:0 2px 10px rgba(0,0,0,.08);text-align:center}
+  header h1{font-size:1.3em;color:#1d4ed8;margin-bottom:6px;line-height:1.3}
+  header .sub{color:#64748b;font-size:.95em}
+  .intro{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;
+         padding:14px 16px;margin-bottom:22px;font-size:.94em;color:#78350f}
+  .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .nav a{flex:1 1 30%;text-align:center;background:#fff;border:2px solid #e2e8f0;border-radius:10px;
+         padding:12px 6px;text-decoration:none;color:#475569;font-weight:600;font-size:.88em;
+         min-height:48px;display:flex;align-items:center;justify-content:center}
+  .nav a:hover{border-color:#1d4ed8;color:#1d4ed8}
+  section{background:#fff;border-radius:15px;padding:20px;margin-bottom:20px;
+          box-shadow:0 2px 10px rgba(0,0,0,.08);scroll-margin-top:16px;
+          border:2px solid transparent;transition:border-color .3s,box-shadow .3s}
+  section:target{border-color:#1d4ed8;box-shadow:0 4px 18px rgba(29,78,216,.22)}
+  section h2{font-size:1.1em;color:#1d4ed8;margin-bottom:4px;line-height:1.35}
+  section .frage{color:#64748b;font-size:.92em;margin-bottom:14px;font-style:italic}
+  details{border:1px solid #e2e8f0;border-radius:10px;margin-bottom:10px;overflow:hidden}
+  details[open]{border-color:#93c5fd}
+  summary{cursor:pointer;padding:13px 14px;font-weight:600;font-size:.95em;background:#f5f8ff;
+          list-style:none;display:flex;align-items:center;gap:10px;min-height:48px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"\25B8";color:#1d4ed8;font-size:1.1em;transition:transform .2s;flex:0 0 auto}
+  details[open] summary::before{transform:rotate(90deg)}
+  .stufe{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:20px;
+         padding:2px 10px;font-size:.78em;font-weight:700;flex:0 0 auto}
+  .stufe.s2{background:#e0f2fe;color:#0369a1}
+  .stufe.s3{background:#dcfce7;color:#15803d}
+  .txt{flex:1 1 auto;min-width:0}
+  .inhalt{padding:4px 16px 16px;font-size:.95em;border-top:1px solid #f1f5f9}
+  .inhalt p{margin-top:10px}
+  .inhalt ul{margin:10px 0 0 20px}
+  .inhalt li{margin-bottom:6px}
+  .formel{background:#f8fafc;border-radius:8px;padding:11px 12px;margin:10px 0;
+          overflow-x:auto;line-height:1.9;font-size:.98em}
+  .merk{background:#eff6ff;border-left:4px solid #1d4ed8;border-radius:8px;
+        padding:10px 12px;margin:12px 0;font-size:.93em}
+  .warn{background:#fef2f2;border-left:4px solid #dc2626;border-radius:8px;
+        padding:10px 12px;margin:12px 0;font-size:.93em;color:#7f1d1d}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+  table{border-collapse:collapse;width:100%;font-size:.86em}
+  th,td{border:1px solid #e2e8f0;padding:6px 6px;text-align:center}
+  th{background:#f8fafc;font-weight:600}
+  td.lbl,th.lbl{text-align:left;background:#f8fafc;font-weight:600}
+  table.eng{font-size:.8em}
+  table.eng th,table.eng td{padding:5px 3px}
+  .karte{border:1px solid #e2e8f0;border-radius:8px;margin:10px 0;overflow:hidden}
+  .karte .kopf{background:#f8fafc;padding:7px 10px;font-weight:600;font-size:.92em}
+  .karte .zeile{display:flex;gap:8px;padding:6px 10px;font-size:.92em;
+                border-top:1px solid #f1f5f9;align-items:baseline}
+  .karte .zeile b{flex:0 0 88px;font-weight:600;color:#64748b;font-size:.88em}
+  .karte .zeile span{flex:1 1 auto;min-width:0;word-break:break-word}
+  code{background:#f1f5f9;border-radius:4px;padding:1px 5px;font-size:.92em;
+       font-family:'Consolas',Menlo,monospace;word-break:break-word}
+  .foot{text-align:center;margin-top:26px}
+  .foot a.zurueck{display:inline-block;background:#1d4ed8;color:#fff;text-decoration:none;
+          border-radius:10px;padding:14px 24px;font-weight:600;font-size:.95em;min-height:48px}
+  .foot .hint{display:block;margin-top:14px;color:#64748b;font-size:.88em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Elektrische Leistung und Energie</h1>
+  <div class="sub">Gestufte Hilfen &middot; UTEC 11NC &middot; 24.09.2026</div>
+</header>
+
+<div class="intro">
+  <strong>So nutzt du diese Seite:</strong> Zu jeder Aufgabe gibt es drei Stufen.
+  Öffne immer nur die <em>nächste</em> — und erst dann, wenn du selbst nicht weiterkommst.
+  <strong>Stufe&nbsp;1</strong> gibt dir einen Anstoß, <strong>Stufe&nbsp;2</strong> zeigt dir
+  die Formel und was du einsetzt, <strong>Stufe&nbsp;3</strong> zeigt den ganzen Rechenweg.
+  Auch wenn du Stufe&nbsp;3 liest: Schreib den Weg danach selbst auf. Nur so merkst du, ob du
+  ihn wirklich verstanden hast.
+</div>
+
+<div class="nav">
+  <a href="#a1">Aufgabe 1</a>
+  <a href="#a2">Aufgabe 2</a>
+  <a href="#a3">Aufgabe 3</a>
+  <a href="#a4">Aufgabe 4</a>
+  <a href="#a5">Aufgabe 5</a>
+  <a href="#a6">Hausaufgabe</a>
+</div>
+
+<!-- ================= AUFGABE 1 ================= -->
+<section id="a1">
+  <h2>Aufgabe 1 — Typenschild-Rallye</h2>
+  <div class="frage">Vier Typenschilder fotografieren, U, I und P eintragen — und die fehlende Größe ausrechnen.</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Schau dir ein Typenschild genau an. Meistens stehen dort nur <strong>zwei</strong> der drei
+      Größen — oft die Spannung in Volt (V) und die Leistung in Watt (W). Die Stromstärke in
+      Ampere (A) fehlt.</p>
+      <p>Frag dich: Wie hängen die drei Größen zusammen? Wenn du zwei davon kennst, kannst du die
+      dritte immer berechnen.</p>
+      <p>Noch eine Frage vorab: Auf manchen Schildern steht <code>1500&#8239;mA</code>, auf anderen
+      <code>2,2&#8239;kW</code>. Was bedeuten die kleinen Buchstaben <strong>m</strong> und
+      <strong>k</strong> vor der Einheit? Ohne die geht es hier schief.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Ansatz</span></summary>
+    <div class="inhalt">
+      <p>Die Grundformel für die elektrische Leistung:</p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em>
+        &nbsp;&nbsp;&nbsp; (Watt = Volt &middot; Ampere)
+      </div>
+      <p>Daraus bekommst du durch Umstellen die beiden anderen Formen:</p>
+      <div class="formel">
+        <em>I</em> = <em>P</em> &frasl; <em>U</em> &nbsp;&nbsp;&nbsp;&nbsp;
+        <em>U</em> = <em>P</em> &frasl; <em>I</em>
+      </div>
+      <p>Welche Form du brauchst, hängt davon ab, was auf dem Schild <em>fehlt</em>:</p>
+      <ul>
+        <li>P und U stehen da, I fehlt &rarr; <em>I</em> = <em>P</em> &frasl; <em>U</em></li>
+        <li>U und I stehen da, P fehlt &rarr; <em>P</em> = <em>U</em> &middot; <em>I</em></li>
+      </ul>
+      <p><strong>Vorsilben umrechnen — vor dem Einsetzen!</strong></p>
+      <table class="eng">
+        <tr><th class="lbl">Vorsilbe</th><th>Bedeutung</th><th>Beispiel</th></tr>
+        <tr><td class="lbl">k (kilo)</td><td>&middot; 1000</td><td>2,2&#8239;kW = 2200&#8239;W</td></tr>
+        <tr><td class="lbl">m (milli)</td><td>&frasl; 1000</td><td>1500&#8239;mA = 1,5&#8239;A</td></tr>
+      </table>
+      <div class="merk">Rechne <strong>immer zuerst</strong> in die Grundeinheiten V, A und W um.
+      Dann erst einsetzen. Sonst kommt ein Ergebnis heraus, das um den Faktor 1000 danebenliegt.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechenweg</span></summary>
+    <div class="inhalt">
+      <p><strong>Beispiel 1 — Handy-Netzteil, auf dem Schild steht 5&#8239;V und 2&#8239;A.
+      Gesucht: P</strong></p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em><br>
+        <em>P</em> = 5&#8239;V &middot; 2&#8239;A = <strong>10&#8239;W</strong>
+      </div>
+
+      <p><strong>Beispiel 2 — Schreibtischlampe, auf dem Schild steht 230&#8239;V und 60&#8239;W.
+      Gesucht: I</strong></p>
+      <div class="formel">
+        <em>I</em> = <em>P</em> &frasl; <em>U</em><br>
+        <em>I</em> = 60&#8239;W &frasl; 230&#8239;V &asymp; <strong>0,26&#8239;A</strong>
+        &nbsp;(= 260&#8239;mA)
+      </div>
+
+      <p><strong>Beispiel 3 — Laptop-Netzteil, auf dem Schild steht 19&#8239;V und 3420&#8239;mA.
+      Gesucht: P</strong></p>
+      <p>Erst umrechnen: 3420&#8239;mA = 3420 &frasl; 1000 = 3,42&#8239;A.</p>
+      <div class="formel">
+        <em>P</em> = 19&#8239;V &middot; 3,42&#8239;A &asymp; <strong>65&#8239;W</strong>
+      </div>
+
+      <p><strong>Beispiel 4 — Mikrowelle, auf dem Schild steht 230&#8239;V und 1,2&#8239;kW.
+      Gesucht: I</strong></p>
+      <p>Erst umrechnen: 1,2&#8239;kW = 1,2 &middot; 1000 = 1200&#8239;W.</p>
+      <div class="formel">
+        <em>I</em> = 1200&#8239;W &frasl; 230&#8239;V &asymp; <strong>5,2&#8239;A</strong>
+      </div>
+
+      <div class="merk">So füllst du deine Tabelle aus: Trage zuerst ab, was auf dem Foto steht.
+      Rechne dann die Vorsilben weg. Erst danach rechnest du die fehlende Größe aus — und
+      schreibst die Einheit immer dazu.</div>
+      <div class="warn">Achtung bei Netzteilen: Oft stehen zwei Zeilen drauf, eine für den
+      <em>Eingang</em> (INPUT, z.&nbsp;B. 230&#8239;V) und eine für den <em>Ausgang</em>
+      (OUTPUT, z.&nbsp;B. 5&#8239;V). Nimm die Werte aus <strong>einer</strong> Zeile, mische
+      sie nicht.</div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= AUFGABE 2 ================= -->
+<section id="a2">
+  <h2>Aufgabe 2 — Wasserkocher und Sicherung</h2>
+  <div class="frage">230&#8239;V, 2200&#8239;W — wie groß ist I? Und warum sichert man mit 16&#8239;A ab?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Schreib dir zuerst auf, was du hast und was du suchst:</p>
+      <ul>
+        <li>gegeben: <em>U</em> = 230&#8239;V, <em>P</em> = 2200&#8239;W</li>
+        <li>gesucht: <em>I</em></li>
+      </ul>
+      <p>Du kennst <em>P</em> = <em>U</em> &middot; <em>I</em>. Darin steht das <em>I</em> aber
+      auf der falschen Seite. Wie holst du es allein auf eine Seite? Überleg: Womit ist <em>I</em>
+      malgenommen — und was ist die Gegenrechnung zum Malnehmen?</p>
+      <p>Für den zweiten Teil: Eine Sicherung ist ein Schalter, der bei zu großer Stromstärke
+      abschaltet. Bei 16&#8239;A ist Schluss. Rechne also aus, wie viel Strom die beiden Geräte
+      <em>zusammen</em> ziehen, und vergleiche mit 16&#8239;A.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Ansatz</span></summary>
+    <div class="inhalt">
+      <p><em>I</em> steht in <em>P</em> = <em>U</em> &middot; <em>I</em> mit <em>U</em>
+      malgenommen. Also teilst du beide Seiten durch <em>U</em>:</p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em> &nbsp;&nbsp;|&nbsp; : <em>U</em><br>
+        <em>I</em> = <em>P</em> &frasl; <em>U</em>
+      </div>
+      <p>Jetzt setzt du <em>P</em> = 2200&#8239;W und <em>U</em> = 230&#8239;V ein. Beides sind
+      schon Grundeinheiten, du musst nichts umrechnen.</p>
+      <p><strong>Für die Sicherung:</strong> In einem Haushalt hängen alle Steckdosen eines
+      Zimmers meist an <em>einem</em> Stromkreis mit <em>einer</em> Sicherung. Die Ströme der
+      Geräte <strong>addieren sich</strong>:</p>
+      <div class="formel">
+        <em>I</em><sub>gesamt</sub> = <em>I</em><sub>1</sub> + <em>I</em><sub>2</sub>
+      </div>
+      <p>Rechne also für den Föhn (1800&#8239;W an 230&#8239;V) genauso <em>I</em> aus wie für
+      den Wasserkocher, addiere beide und vergleiche mit 16&#8239;A.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechenweg</span></summary>
+    <div class="inhalt">
+      <p><strong>Stromstärke des Wasserkochers:</strong></p>
+      <div class="formel">
+        <em>I</em> = <em>P</em> &frasl; <em>U</em><br>
+        <em>I</em> = 2200&#8239;W &frasl; 230&#8239;V = 9,565…&#8239;A
+        &asymp; <strong>9,6&#8239;A</strong>
+      </div>
+      <p>Der Wasserkocher allein zieht also rund 9,6&#8239;A. Das ist weniger als 16&#8239;A —
+      allein läuft er problemlos.</p>
+
+      <p><strong>Warum überhaupt 16&#8239;A?</strong> Durch die Leitungen in der Wand fließt der
+      Strom durch dünne Kupferdrähte. Je größer die Stromstärke, desto wärmer werden sie. Ab einer
+      bestimmten Stromstärke wird die Leitung so heiß, dass die Isolierung schmilzt — Brandgefahr.
+      Übliche Haushaltsleitungen (1,5&#8239;mm² Querschnitt) halten dauerhaft etwa 16&#8239;A aus.
+      Die Sicherung schaltet deshalb vorher ab. Sie schützt die <strong>Leitung</strong>, nicht
+      das Gerät.</p>
+
+      <p><strong>Wasserkocher und Föhn zusammen:</strong></p>
+      <div class="formel">
+        Föhn: &nbsp;<em>I</em><sub>2</sub> = 1800&#8239;W &frasl; 230&#8239;V = 7,826…&#8239;A
+        &asymp; 7,8&#8239;A<br>
+        Wasserkocher: &nbsp;<em>I</em><sub>1</sub> &asymp; 9,6&#8239;A
+      </div>
+      <div class="formel">
+        <em>I</em><sub>gesamt</sub> = 9,565&#8239;A + 7,826&#8239;A = 17,39…&#8239;A
+        &asymp; <strong>17,4&#8239;A</strong>
+      </div>
+      <p>Schneller geht es auch über die Leistungen: 2200&#8239;W + 1800&#8239;W = 4000&#8239;W,
+      und 4000&#8239;W &frasl; 230&#8239;V &asymp; 17,4&#8239;A — dasselbe Ergebnis.</p>
+
+      <div class="warn"><strong>Ergebnis:</strong> 17,4&#8239;A sind mehr als 16&#8239;A.
+      Die Sicherung löst aus, der Strom ist weg. Genau deshalb sollte man Wasserkocher und Föhn
+      nicht gleichzeitig an denselben Stromkreis hängen.</div>
+      <div class="merk">Faustregel für zu Hause: 16&#8239;A &middot; 230&#8239;V &asymp;
+      3680&#8239;W. Mehr als etwa 3600&#8239;W darfst du an einem Stromkreis nicht gleichzeitig
+      betreiben.</div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= AUFGABE 3 ================= -->
+<section id="a3">
+  <h2>Aufgabe 3 — Messreihe am Glühlämpchen</h2>
+  <div class="frage">U und I bei 2, 3, 4, 5, 6&#8239;V messen; daraus P und R berechnen.</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p><strong>Zum Aufbau:</strong> Du misst zwei Größen gleichzeitig mit zwei Multimetern.
+      Überleg dir vorher für jedes Gerät: Wo muss es hin?</p>
+      <ul>
+        <li>Das <strong>Voltmeter</strong> misst die Spannung <em>über</em> dem Lämpchen. Wie
+            wird es angeschlossen — parallel oder in Reihe?</li>
+        <li>Das <strong>Amperemeter</strong> misst den Strom, der <em>durch</em> das Lämpchen
+            fließt. Der Strom muss also durch das Messgerät hindurch. Was heißt das für den
+            Anschluss?</li>
+      </ul>
+      <p><strong>Zum Netzgerät (Leybold 521&#8239;488, 0–12&#8239;V):</strong> Dreh langsam hoch
+      und stell genau 2&#8239;V ein, dann 3&#8239;V usw. Geh <strong>nie</strong> über die
+      Nennspannung, die auf dem Lämpchen aufgedruckt ist — sonst brennt es durch.</p>
+      <p><strong>Zum Rechnen:</strong> Für jeden Messpunkt brauchst du zwei Werte: die Leistung
+      und den Widerstand. Beides kennst du schon aus früheren Stunden.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Ansatz</span></summary>
+    <div class="inhalt">
+      <p><strong>Messregeln:</strong></p>
+      <ul>
+        <li><strong>Voltmeter parallel</strong> zum Lämpchen (also daneben, direkt an die beiden
+            Anschlüsse des Lämpchens).</li>
+        <li><strong>Amperemeter in Reihe</strong> — der Stromkreis wird aufgetrennt und das
+            Messgerät dazwischengeschaltet.</li>
+      </ul>
+      <div class="warn"><strong>VC272: Umstecken nicht vergessen!</strong> Für die Strommessung
+      muss die rote Leitung aus der V-Buchse raus und in die <strong>mA-Buchse</strong> rein,
+      und der Drehschalter muss auf <code>mA</code> stehen. Steckst du bei Strommessung in der
+      V-Buchse, misst du nichts Sinnvolles; steckst du bei Spannungsmessung in der mA-Buchse,
+      machst du einen Kurzschluss.</div>
+
+      <p><strong>Die beiden Formeln:</strong></p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <em>R</em> = <em>U</em> &frasl; <em>I</em>
+      </div>
+
+      <p><strong>Der wichtigste Punkt:</strong> Dein Amperemeter zeigt <strong>mA</strong> an,
+      die Formeln brauchen aber <strong>A</strong>. Rechne vor jedem Einsetzen um:</p>
+      <div class="formel">
+        Wert in mA &nbsp;&frasl; 1000 = &nbsp;Wert in A
+      </div>
+      <table class="eng">
+        <tr><th>mA</th><th>A</th></tr>
+        <tr><td>50&#8239;mA</td><td>0,050&#8239;A</td></tr>
+        <tr><td>92&#8239;mA</td><td>0,092&#8239;A</td></tr>
+        <tr><td>120&#8239;mA</td><td>0,120&#8239;A</td></tr>
+        <tr><td>1000&#8239;mA</td><td>1,000&#8239;A</td></tr>
+      </table>
+      <div class="merk">Merkhilfe: Das Komma wandert <strong>drei Stellen nach links</strong>.
+      Aus 92 wird 0,092.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechenweg</span></summary>
+    <div class="inhalt">
+      <p><strong>Beispiel für einen Messpunkt:</strong> Du hast <em>U</em> = 4&#8239;V eingestellt
+      und das Amperemeter zeigt <em>I</em> = 92&#8239;mA.</p>
+
+      <p><strong>Schritt 1 — umrechnen:</strong></p>
+      <div class="formel">
+        <em>I</em> = 92&#8239;mA = 92 &frasl; 1000 A = <strong>0,092&#8239;A</strong>
+      </div>
+
+      <p><strong>Schritt 2 — Leistung:</strong></p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em><br>
+        <em>P</em> = 4&#8239;V &middot; 0,092&#8239;A = <strong>0,368&#8239;W</strong>
+      </div>
+
+      <p><strong>Schritt 3 — Widerstand:</strong></p>
+      <div class="formel">
+        <em>R</em> = <em>U</em> &frasl; <em>I</em><br>
+        <em>R</em> = 4&#8239;V &frasl; 0,092&#8239;A = 43,478…&#8239;&Omega;
+        &asymp; <strong>43,5&#8239;&Omega;</strong>
+      </div>
+
+      <p>So sieht deine Tabelle dann aus (die Stromwerte sind Beispielwerte, deine gemessenen
+      können etwas abweichen):</p>
+      <table class="eng">
+        <tr><th class="lbl"><em>U</em> in V</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+        <tr><td class="lbl"><em>I</em> in mA</td><td>68</td><td>81</td><td>92</td><td>102</td><td>111</td></tr>
+        <tr><td class="lbl"><em>I</em> in A</td><td>0,068</td><td>0,081</td><td>0,092</td><td>0,102</td><td>0,111</td></tr>
+        <tr><td class="lbl"><em>P</em> in W</td><td>0,136</td><td>0,243</td><td>0,368</td><td>0,510</td><td>0,666</td></tr>
+        <tr><td class="lbl"><em>R</em> in &Omega;</td><td>29,4</td><td>37,0</td><td>43,5</td><td>49,0</td><td>54,1</td></tr>
+      </table>
+
+      <div class="warn"><strong>Der typische Fehler:</strong> mA nicht umgerechnet. Dann rechnest
+      du 4&#8239;V &middot; 92&#8239;A = 368&#8239;W — ein Glühlämpchen mit der Leistung eines
+      Heizlüfters. Wenn dein Ergebnis unsinnig groß ist, hast du fast immer die Umrechnung
+      vergessen.</div>
+      <div class="merk">Dir fällt sicher auf: Der Widerstand <em>R</em> bleibt nicht gleich,
+      sondern wächst mit der Spannung. Der Grund: Der Glühdraht wird heißer, und heißes Metall
+      leitet schlechter. Das Lämpchen hält sich deshalb <strong>nicht</strong> an das ohmsche
+      Gesetz mit konstantem <em>R</em>.</div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= AUFGABE 4 ================= -->
+<section id="a4">
+  <h2>Aufgabe 4 — Das Diagramm P über U auswerten</h2>
+  <div class="frage">Warum ist die Kurve keine Gerade? Und wie kommt man auf P = U²/R und P = I²·R?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Schau dir deine Punkte im Diagramm an. Leg ein Lineal an: Liegen alle Punkte auf einer
+      Geraden durch den Ursprung — oder biegt die Kurve nach oben weg?</p>
+      <p>Prüf es mit Zahlen nach, das ist überzeugender als Hinschauen. Frag dich:</p>
+      <ul>
+        <li>Wenn ich die Spannung <strong>verdopple</strong> (z.&nbsp;B. von 3&#8239;V auf
+            6&#8239;V) — wie stark wächst dann die Leistung? Auch nur auf das Doppelte?</li>
+        <li>Bei einer Geraden durch den Ursprung müsste doppelte Spannung genau doppelte Leistung
+            bedeuten. Stimmt das bei deinen Werten?</li>
+      </ul>
+      <p>Und noch ein Gedanke: In <em>P</em> = <em>U</em> &middot; <em>I</em> stecken
+      <strong>zwei</strong> Größen, die beide mitwachsen, wenn du die Spannung erhöhst. Was macht
+      das mit dem Produkt?</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Ansatz</span></summary>
+    <div class="inhalt">
+      <p>Du hast zwei Formeln, die du zusammensetzen kannst:</p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em> &nbsp;&nbsp;&nbsp;&nbsp; und &nbsp;&nbsp;&nbsp;&nbsp;
+        <em>U</em> = <em>R</em> &middot; <em>I</em> &nbsp; (ohmsches Gesetz)
+      </div>
+      <p>Aus dem ohmschen Gesetz folgt durch Umstellen auch <em>I</em> = <em>U</em> &frasl;
+      <em>R</em>.</p>
+
+      <p><strong>Weg 1 — das <em>I</em> ersetzen.</strong> Setz <em>I</em> = <em>U</em> &frasl;
+      <em>R</em> in <em>P</em> = <em>U</em> &middot; <em>I</em> ein. Was steht dann statt
+      <em>I</em> da? Und was ergibt <em>U</em> mal <em>U</em>?</p>
+
+      <p><strong>Weg 2 — das <em>U</em> ersetzen.</strong> Setz <em>U</em> = <em>R</em> &middot;
+      <em>I</em> in <em>P</em> = <em>U</em> &middot; <em>I</em> ein. Was ergibt <em>I</em> mal
+      <em>I</em>?</p>
+
+      <div class="merk">Schau dir dann in der fertigen Formel <em>P</em> = <em>U</em>² &frasl;
+      <em>R</em> an, wo das <em>U</em> steht: Es ist <strong>quadriert</strong>. Genau das ist
+      der Grund für die Krümmung. Eine Größe, die quadratisch wächst, gibt im Diagramm nie eine
+      Gerade.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechenweg</span></summary>
+    <div class="inhalt">
+      <p><strong>Die Umformung zu <em>P</em> = <em>U</em>² &frasl; <em>R</em>:</strong></p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em> &nbsp;&nbsp;&nbsp;
+        mit &nbsp; <em>I</em> = <em>U</em> &frasl; <em>R</em><br>
+        <em>P</em> = <em>U</em> &middot; ( <em>U</em> &frasl; <em>R</em> )<br>
+        <em>P</em> = <em>U</em>² &frasl; <em>R</em>
+      </div>
+
+      <p><strong>Die Umformung zu <em>P</em> = <em>I</em>² &middot; <em>R</em>:</strong></p>
+      <div class="formel">
+        <em>P</em> = <em>U</em> &middot; <em>I</em> &nbsp;&nbsp;&nbsp;
+        mit &nbsp; <em>U</em> = <em>R</em> &middot; <em>I</em><br>
+        <em>P</em> = ( <em>R</em> &middot; <em>I</em> ) &middot; <em>I</em><br>
+        <em>P</em> = <em>I</em>² &middot; <em>R</em>
+      </div>
+
+      <p>Du hast jetzt also drei gleichwertige Formeln für dieselbe Leistung — du nimmst die,
+      zu der die gegebenen Größen passen:</p>
+      <table class="eng">
+        <tr><th class="lbl">Formel</th><th>brauchst du, wenn gegeben sind</th></tr>
+        <tr><td class="lbl"><em>P</em> = <em>U</em> &middot; <em>I</em></td><td>U und I</td></tr>
+        <tr><td class="lbl"><em>P</em> = <em>U</em>² &frasl; <em>R</em></td><td>U und R</td></tr>
+        <tr><td class="lbl"><em>P</em> = <em>I</em>² &middot; <em>R</em></td><td>I und R</td></tr>
+      </table>
+
+      <p><strong>Warum die Kurve gekrümmt ist:</strong> In <em>P</em> = <em>U</em>² &frasl;
+      <em>R</em> steht <em>U</em> im Quadrat. Bleibt <em>R</em> gleich und du verdoppelst die
+      Spannung, dann vervierfacht sich die Leistung — denn 2² = 4.</p>
+      <p>Rechne es mit <em>R</em> = 40&#8239;&Omega; nach:</p>
+      <div class="formel">
+        <em>U</em> = 3&#8239;V: &nbsp; <em>P</em> = (3&#8239;V)² &frasl; 40&#8239;&Omega;
+        = 9 &frasl; 40 W = 0,225&#8239;W<br>
+        <em>U</em> = 6&#8239;V: &nbsp; <em>P</em> = (6&#8239;V)² &frasl; 40&#8239;&Omega;
+        = 36 &frasl; 40 W = 0,900&#8239;W
+      </div>
+      <p>Doppelte Spannung, aber <strong>vierfache</strong> Leistung: 0,900&#8239;W ist das
+      Vierfache von 0,225&#8239;W. Deshalb steigt die Kurve immer steiler an und ist keine
+      Gerade.</p>
+
+      <p><strong>Anschaulich:</strong> Erhöhst du die Spannung, passiert zweierlei gleichzeitig —
+      es fließt <em>mehr</em> Strom, <em>und</em> jedes Elektron bekommt <em>mehr</em> Energie
+      mit. Beide Effekte multiplizieren sich in <em>P</em> = <em>U</em> &middot; <em>I</em>.</p>
+
+      <div class="merk">Beim Glühlämpchen kommt noch etwas dazu: <em>R</em> ist nicht ganz
+      konstant, sondern wächst mit der Temperatur (siehe Aufgabe&nbsp;3). Dadurch steigt
+      <em>P</em> etwas weniger stark als das reine Quadrat — aber die Kurve bleibt trotzdem
+      deutlich nach oben gekrümmt.</div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= AUFGABE 5 ================= -->
+<section id="a5">
+  <h2>Aufgabe 5 — Energie und Kosten</h2>
+  <div class="frage">Wasserkocher, 2200&#8239;W, 4&#8239;Minuten: Energie in Ws und kWh, dann die Kosten bei 0,35&#8239;&euro;/kWh.</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p><strong>Leistung</strong> und <strong>Energie</strong> sind nicht dasselbe. Die Leistung
+      sagt, wie schnell ein Gerät Energie verbraucht. Die Energie sagt, wie viel insgesamt
+      zusammenkommt. Frag dich: Wovon hängt die Gesamtmenge also zusätzlich ab?</p>
+      <p>Bevor du rechnest, schau dir die Einheiten an. Die Leistung ist in Watt gegeben, die
+      Zeit in <strong>Minuten</strong>. Passt das zusammen? Sekunde und Minute sind nicht
+      dasselbe — eine davon musst du umrechnen.</p>
+      <p>Und für die Stromrechnung: Der Stromanbieter rechnet nicht in Ws, sondern in
+      <strong>kWh</strong> (Kilowattstunden). Was bedeuten die drei Teile dieser Einheit —
+      k, W und h?</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Ansatz</span></summary>
+    <div class="inhalt">
+      <p>Die Formel für die elektrische Energie (Arbeit):</p>
+      <div class="formel">
+        <em>W</em> = <em>P</em> &middot; <em>t</em>
+      </div>
+      <p>Das Entscheidende ist, in <strong>welchen Einheiten</strong> du P und t einsetzt — davon
+      hängt ab, in welcher Einheit das Ergebnis herauskommt:</p>
+      <table class="eng">
+        <tr><th class="lbl">P einsetzen in</th><th>t einsetzen in</th><th>Ergebnis in</th></tr>
+        <tr><td class="lbl">Watt (W)</td><td>Sekunden (s)</td><td>Wattsekunden (Ws) = Joule (J)</td></tr>
+        <tr><td class="lbl">Kilowatt (kW)</td><td>Stunden (h)</td><td>Kilowattstunden (kWh)</td></tr>
+      </table>
+      <div class="merk"><strong>Merksatz:</strong> Willst du kWh, dann setz die Leistung in
+      <strong>kW</strong> und die Zeit in <strong>h</strong> ein. Nichts anderes.</div>
+
+      <p><strong>Was du dafür umrechnen musst:</strong></p>
+      <div class="formel">
+        2200&#8239;W = 2200 &frasl; 1000 = 2,2&#8239;kW<br>
+        4&#8239;min = 4 &middot; 60 = 240&#8239;s<br>
+        4&#8239;min = 4 &frasl; 60 h &asymp; 0,0667&#8239;h
+      </div>
+
+      <p><strong>Ws in kWh umrechnen</strong> (falls du den ersten Weg schon gerechnet hast):</p>
+      <div class="formel">
+        1&#8239;kWh = 1000&#8239;W &middot; 3600&#8239;s = <strong>3&#8239;600&#8239;000&#8239;Ws</strong>
+      </div>
+      <p>Du teilst deinen Ws-Wert also durch 3&#8239;600&#8239;000.</p>
+
+      <p><strong>Kosten:</strong> Der Preis gilt <em>pro kWh</em>. Also:</p>
+      <div class="formel">
+        Kosten = Energie in kWh &middot; Preis pro kWh
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechenweg</span></summary>
+    <div class="inhalt">
+      <p><strong>Schritt 1 — Energie in Wattsekunden (Joule):</strong></p>
+      <p>Zeit umrechnen: <em>t</em> = 4&#8239;min = 4 &middot; 60&#8239;s = 240&#8239;s</p>
+      <div class="formel">
+        <em>W</em> = <em>P</em> &middot; <em>t</em><br>
+        <em>W</em> = 2200&#8239;W &middot; 240&#8239;s = <strong>528&#8239;000&#8239;Ws</strong><br>
+        = 528&#8239;000&#8239;J = <strong>528&#8239;kJ</strong>
+      </div>
+
+      <p><strong>Schritt 2 — dasselbe in Kilowattstunden.</strong> Zwei Wege, beide führen zum
+      gleichen Ergebnis.</p>
+
+      <p><em>Weg A: direkt mit kW und h rechnen</em></p>
+      <div class="formel">
+        <em>P</em> = 2200&#8239;W = 2,2&#8239;kW<br>
+        <em>t</em> = 4&#8239;min = 4 &frasl; 60 h &asymp; 0,0667&#8239;h<br>
+        <em>W</em> = 2,2&#8239;kW &middot; 0,0667&#8239;h &asymp; <strong>0,147&#8239;kWh</strong>
+      </div>
+
+      <p><em>Weg B: aus dem Ws-Wert umrechnen</em></p>
+      <div class="formel">
+        <em>W</em> = 528&#8239;000&#8239;Ws &frasl; 3&#8239;600&#8239;000
+        = 0,1467…&#8239;kWh &asymp; <strong>0,147&#8239;kWh</strong>
+      </div>
+
+      <p><strong>Schritt 3 — Kosten bei 0,35&#8239;&euro; pro kWh:</strong></p>
+      <div class="formel">
+        Kosten = 0,1467&#8239;kWh &middot; 0,35&#8239;&euro;/kWh
+        = 0,0513…&#8239;&euro; &asymp; <strong>0,05&#8239;&euro; = rund 5,1&#8239;Cent</strong>
+      </div>
+
+      <p><strong>Antwortsatz:</strong> Der Wasserkocher verbraucht in 4&#8239;Minuten
+      528&#8239;kJ, das sind etwa 0,147&#8239;kWh. Das kostet rund 5&#8239;Cent.</p>
+
+      <div class="merk">Klingt nach wenig — aber rechne es aufs Jahr hoch: Dreimal täglich
+      Wasser kochen sind rund 15&#8239;Cent am Tag und über 50&#8239;&euro; im Jahr.</div>
+      <div class="warn"><strong>Häufiger Fehler:</strong> 2200&#8239;W &middot; 4&#8239;min
+      rechnen und das Ergebnis „kWh“ nennen. Minuten sind weder Sekunden noch Stunden — du musst
+      dich für eine der beiden Kombinationen aus der Tabelle in Stufe&nbsp;2 entscheiden.</div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= AUFGABE 6 (HAUSAUFGABE) ================= -->
+<section id="a6">
+  <h2>Hausaufgabe — Standby ein ganzes Jahr</h2>
+  <div class="frage">3&#8239;W dauerhaft, 24&#8239;Stunden am Tag, 365&#8239;Tage: Wie viel kWh und was kostet das?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Es ist dieselbe Formel wie in Aufgabe&nbsp;5 — nur läuft das Gerät diesmal sehr viel
+      länger. Der ganze Trick steckt in der <strong>Zeit</strong>.</p>
+      <p>Frag dich: Wie viele Stunden hat ein <em>Tag</em>? Und wie viele Stunden hat dann ein
+      <em>Jahr</em> mit 365&#8239;Tagen? Rechne diese eine Zahl zuerst aus, bevor du irgendetwas
+      anderes machst — mit ihr wird die Aufgabe einfach.</p>
+      <p>Und noch etwas: Du willst am Ende kWh haben. In welcher Einheit musst du die
+      Leistung 3&#8239;W dafür einsetzen?</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Ansatz</span></summary>
+    <div class="inhalt">
+      <p><strong>Zwischenschritt — die Zeit in Stunden:</strong></p>
+      <div class="formel">
+        <em>t</em> = 24&#8239;h/Tag &middot; 365&#8239;Tage = <strong>8760&#8239;h</strong>
+      </div>
+      <p>Diese Zahl solltest du dir merken: Ein Jahr hat 8760&#8239;Stunden.</p>
+
+      <p><strong>Die Leistung in kW:</strong></p>
+      <div class="formel">
+        <em>P</em> = 3&#8239;W = 3 &frasl; 1000 kW = <strong>0,003&#8239;kW</strong>
+      </div>
+
+      <p><strong>Dann wie gehabt:</strong></p>
+      <div class="formel">
+        <em>W</em> = <em>P</em> &middot; <em>t</em>
+        &nbsp;&nbsp;(P in kW, t in h &rarr; Ergebnis in kWh)<br>
+        Kosten = <em>W</em> &middot; 0,35&#8239;&euro;/kWh
+      </div>
+      <div class="merk">Schätz vorher mal: Wie viel kostet ein Gerät, das „nur“ 3&#8239;W zieht,
+      wohl im Jahr? Notier deine Schätzung und vergleiche sie danach mit dem Ergebnis.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechenweg</span></summary>
+    <div class="inhalt">
+      <p><strong>Schritt 1 — Betriebszeit in Stunden:</strong></p>
+      <div class="formel">
+        <em>t</em> = 24&#8239;h &middot; 365 = <strong>8760&#8239;h</strong>
+      </div>
+
+      <p><strong>Schritt 2 — Leistung in kW:</strong></p>
+      <div class="formel">
+        <em>P</em> = 3&#8239;W = <strong>0,003&#8239;kW</strong>
+      </div>
+
+      <p><strong>Schritt 3 — Energie:</strong></p>
+      <div class="formel">
+        <em>W</em> = <em>P</em> &middot; <em>t</em><br>
+        <em>W</em> = 0,003&#8239;kW &middot; 8760&#8239;h = <strong>26,28&#8239;kWh</strong>
+      </div>
+
+      <p><strong>Schritt 4 — Kosten:</strong></p>
+      <div class="formel">
+        Kosten = 26,28&#8239;kWh &middot; 0,35&#8239;&euro;/kWh
+        = 9,198&#8239;&euro; &asymp; <strong>9,20&#8239;&euro;</strong>
+      </div>
+
+      <p><strong>Antwortsatz:</strong> Das Gerät verbraucht im Standby 26,28&#8239;kWh pro Jahr.
+      Das kostet etwa 9,20&#8239;&euro; — nur fürs Nichtstun.</p>
+
+      <div class="merk"><strong>Jetzt weiterdenken:</strong> In einem normalen Haushalt stehen
+      schnell 10 solche Geräte herum — Fernseher, Receiver, Router, Spielkonsole, Mikrowelle mit
+      Uhr, Ladegeräte in der Steckdose, Stereoanlage &hellip;<br><br>
+      10 &middot; 26,28&#8239;kWh = <strong>262,8&#8239;kWh</strong> im Jahr, das sind rund
+      <strong>92&#8239;&euro;</strong>. Dafür bekommst du keine einzige Sekunde Nutzen.<br><br>
+      Schaltbare Steckdosenleisten kosten ein paar Euro und schalten alles wirklich ab. Die
+      rechnen sich im ersten Jahr.</div>
+      <div class="warn"><strong>Häufiger Fehler:</strong> mit 365&#8239;Stunden statt
+      8760&#8239;Stunden rechnen. Das Gerät läuft rund um die Uhr, nicht eine Stunde pro Tag.</div>
+    </div>
+  </details>
+</section>
+
+<div class="foot">
+  <a class="zurueck" href="index.html">&larr; Zur Materialübersicht</a>
+  <span class="hint">Wenn dir auch nach Stufe&nbsp;3 etwas unklar bleibt, schreib dir die Stelle
+  auf — wir gehen sie gemeinsam durch.</span>
+</div>
+
+</div>
+</body>
+</html>
