@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilfen: Reihen- und Parallelschaltung messen | UTEC 11NC</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#1e293b;
+       line-height:1.6;padding:16px 14px 60px;-webkit-text-size-adjust:100%}
+  .wrap{max-width:680px;margin:0 auto}
+  header{background:#fff;border-radius:15px;padding:22px 20px;margin-bottom:18px;
+         box-shadow:0 2px 10px rgba(0,0,0,.08);text-align:center}
+  header h1{font-size:1.3em;color:#1d4ed8;margin-bottom:6px;line-height:1.3}
+  header .sub{color:#64748b;font-size:.95em}
+  .intro{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;
+         padding:14px 16px;margin-bottom:22px;font-size:.94em;color:#78350f}
+  section{background:#fff;border-radius:15px;padding:20px;margin-bottom:20px;
+          box-shadow:0 2px 10px rgba(0,0,0,.08);scroll-margin-top:16px;
+          border:2px solid transparent;transition:border-color .3s,box-shadow .3s}
+  section:target{border-color:#1d4ed8;box-shadow:0 4px 18px rgba(29,78,216,.22)}
+  section h2{font-size:1.1em;color:#1d4ed8;margin-bottom:4px;line-height:1.35}
+  section .frage{color:#64748b;font-size:.92em;margin-bottom:14px;font-style:italic}
+  details{border:1px solid #e2e8f0;border-radius:10px;margin-bottom:10px;overflow:hidden}
+  details[open]{border-color:#93c5fd}
+  summary{cursor:pointer;padding:13px 14px;font-weight:600;font-size:.95em;background:#f5f8ff;
+          list-style:none;display:flex;align-items:center;gap:10px;min-height:48px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"\25B8";color:#1d4ed8;font-size:1.1em;transition:transform .2s;flex:0 0 auto}
+  details[open] summary::before{transform:rotate(90deg)}
+  .stufe{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:20px;
+         padding:2px 10px;font-size:.78em;font-weight:700;flex:0 0 auto}
+  .stufe.s2{background:#e0f2fe;color:#0369a1}
+  .stufe.s3{background:#dcfce7;color:#15803d}
+  .txt{flex:1 1 auto;min-width:0}
+  .inhalt{padding:4px 16px 16px;font-size:.95em;border-top:1px solid #f1f5f9}
+  .inhalt p{margin-top:10px}
+  .inhalt ul,.inhalt ol{margin:10px 0 0 20px}
+  .inhalt li{margin-bottom:6px}
+  .formel{background:#f8fafc;border-radius:8px;padding:11px 12px;margin:10px 0;
+          overflow-x:auto;line-height:1.9;font-size:.98em}
+  .merk{background:#eff6ff;border-left:4px solid #1d4ed8;border-radius:8px;
+        padding:10px 12px;margin:12px 0;font-size:.93em}
+  .warn{background:#fef2f2;border-left:4px solid #dc2626;border-radius:8px;
+        padding:10px 12px;margin:12px 0;font-size:.93em;color:#7f1d1d}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+  table{border-collapse:collapse;width:100%;font-size:.86em}
+  th,td{border:1px solid #e2e8f0;padding:6px 6px;text-align:center}
+  th{background:#f8fafc;font-weight:600}
+  td.lbl,th.lbl{text-align:left;background:#f8fafc;font-weight:600}
+  .bild{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin:12px 0}
+  .bild svg{width:100%;height:auto;display:block}
+  .bild .legende{font-size:.86em;color:#64748b;margin-top:8px;text-align:center}
+  code{background:#f1f5f9;border-radius:4px;padding:1px 5px;font-size:.92em;
+       font-family:'Consolas',Menlo,monospace;word-break:break-word}
+  .foot{text-align:center;margin-top:26px}
+  .foot a.zurueck{display:inline-block;background:#1d4ed8;color:#fff;text-decoration:none;
+          border-radius:10px;padding:14px 24px;font-weight:600;font-size:.95em;min-height:48px}
+  .foot .hint{display:block;margin-top:14px;color:#64748b;font-size:.88em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Reihen- und Parallelschaltung messen</h1>
+  <div class="sub">Gestufte Hilfen &middot; UTEC 11NC &middot; 08.10.2026</div>
+</header>
+
+<div class="intro">
+  <strong>So nutzt du diese Seite:</strong> Es gibt drei Stufen. Öffne immer nur die
+  <em>nächste</em> — und erst dann, wenn du selbst nicht weiterkommst.
+  <strong>Stufe&nbsp;1</strong> gibt dir einen Anstoß, <strong>Stufe&nbsp;2</strong> zeigt dir die
+  Regel und die Messstellen, <strong>Stufe&nbsp;3</strong> führt dich Schritt für Schritt durch
+  den Aufbau. Vor dem Umstecken gilt immer: <strong>Netzgerät aus.</strong>
+</div>
+
+<!-- ================= TEIL 3 ================= -->
+<section id="a3">
+  <h2>Teil 3 — Wo baue ich das Amperemeter ein?</h2>
+  <div class="frage">Parallelschaltung: Du sollst I<sub>1</sub>, I<sub>2</sub> und den Gesamtstrom I messen. Aber wohin kommt das Messgerät?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Überleg erst, <strong>was ein Amperemeter überhaupt macht</strong>: Es zählt die Ladungen,
+      die durch es hindurchfließen. Der Strom muss also <em>durch das Gerät</em> laufen — es wird
+      wie ein Stück Draht in die Leitung eingebaut.</p>
+      <p>Daraus folgt: Du kannst ein Amperemeter nie einfach „danebenhängen“ wie das Voltmeter.
+      Du musst die Leitung an einer Stelle <strong>auftrennen</strong> und das Gerät in die Lücke
+      setzen.</p>
+      <p>Und jetzt die entscheidende Frage: <strong>Welchen Strom willst du gerade messen?</strong>
+      Fahr mit dem Finger den Weg vom Pluspol des Netzgeräts ab. Irgendwo teilt sich der Weg in
+      zwei Äste. Vor der Teilung fließt der ganze Strom, in jedem Ast nur ein Teil davon.
+      Deine Messstelle muss genau dort liegen, wo <em>nur</em> der Strom fließt, der dich
+      interessiert.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Regel und Messstellen</span></summary>
+    <div class="inhalt">
+      <div class="merk">
+        <strong>Amperemeter: in Reihe</strong> — Leitung auftrennen, Gerät in die Lücke.<br>
+        <strong>Voltmeter: parallel</strong> — einfach links und rechts an das Bauteil halten,
+        nichts auftrennen.
+      </div>
+
+      <p>In der Parallelschaltung gibt es deshalb <strong>drei verschiedene Messstellen</strong>:</p>
+
+      <div class="bild">
+      <svg viewBox="0 0 330 185" role="img" aria-label="Parallelschaltung mit drei Messstellen">
+        <g stroke="#1e293b" stroke-width="2" fill="none" stroke-linecap="round">
+          <!-- Rahmen -->
+          <path d="M25 35 H295"/>
+          <path d="M25 150 H295"/>
+          <!-- Quelle links -->
+          <path d="M25 35 V72"/>
+          <path d="M25 113 V150"/>
+          <path d="M12 80 H38"/>
+          <path d="M16 93 H34" stroke-width="4"/>
+          <path d="M25 72 V80"/>
+          <path d="M25 93 V113"/>
+          <!-- Zweig 1 -->
+          <path d="M180 35 V72"/>
+          <path d="M180 113 V150"/>
+          <rect x="166" y="72" width="28" height="41" fill="#fff"/>
+          <!-- Zweig 2 -->
+          <path d="M270 35 V72"/>
+          <path d="M270 113 V150"/>
+          <rect x="256" y="72" width="28" height="41" fill="#fff"/>
+        </g>
+        <g fill="#1e293b" font-family="Segoe UI,sans-serif" font-size="12">
+          <text x="44" y="90">6,0 V</text>
+          <text x="200" y="97">R₁</text>
+          <text x="290" y="97">R₂</text>
+        </g>
+        <!-- Knotenpunkte -->
+        <g fill="#1e293b">
+          <circle cx="180" cy="35" r="3.2"/>
+          <circle cx="180" cy="150" r="3.2"/>
+        </g>
+        <!-- Messstellen -->
+        <g stroke="#dc2626" stroke-width="2.2" fill="#fff">
+          <circle cx="105" cy="35" r="11"/>
+          <circle cx="180" cy="57" r="11"/>
+          <circle cx="270" cy="57" r="11"/>
+        </g>
+        <g fill="#dc2626" font-family="Segoe UI,sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+          <text x="105" y="39">1</text>
+          <text x="180" y="61">2</text>
+          <text x="270" y="61">3</text>
+        </g>
+        <g fill="#dc2626" font-family="Segoe UI,sans-serif" font-size="11">
+          <text x="120" y="24">I (gesamt)</text>
+          <text x="194" y="61">I₁</text>
+          <text x="284" y="61">I₂</text>
+        </g>
+      </svg>
+      <div class="legende">Die drei roten Kreise sind die Stellen, an denen die Leitung
+      aufgetrennt und das Amperemeter eingesetzt wird.</div>
+      </div>
+
+      <ul>
+        <li><strong>Messstelle 1 — Gesamtstrom I:</strong> zwischen Netzgerät und dem
+        Verzweigungspunkt, also <em>vor</em> der Aufteilung. Hier fließt noch alles durch.</li>
+        <li><strong>Messstelle 2 — I<sub>1</sub>:</strong> im Ast von R<sub>1</sub>, zwischen
+        Knoten und R<sub>1</sub>. Hier fließt nur der Strom durch R<sub>1</sub>.</li>
+        <li><strong>Messstelle 3 — I<sub>2</sub>:</strong> genauso im Ast von R<sub>2</sub>.</li>
+      </ul>
+
+      <p>Das Voltmeter bleibt dabei unangetastet parallel am Widerstand — und es zeigt an beiden
+      Widerständen fast denselben Wert. Das ist kein Fehler, sondern genau das Kennzeichen der
+      Parallelschaltung.</p>
+
+      <div class="warn"><strong>Niemals</strong> das Amperemeter parallel zu einem Widerstand
+      anschließen (also einfach links und rechts dranhalten). Das Gerät hat fast keinen
+      Widerstand — du überbrückst damit den Widerstand und baust einen <strong>Kurzschluss</strong>.
+      Die Sicherung im Multimeter ist dann hin.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Schritt für Schritt am Steckbrett</span></summary>
+    <div class="inhalt">
+      <p><strong>Vorbereitung</strong> (einmal): Rotes Kabel in die Buchse <code>mA</code> des
+      Multimeters, schwarzes in <code>COM</code>, Drehschalter auf <code>mA</code> (Gleichstrom).
+      Netzgerät bleibt bei 6,0&nbsp;V.</p>
+
+      <p><strong>Messung I<sub>1</sub> (Ast von R<sub>1</sub>)</strong></p>
+      <ol>
+        <li>Netzgerät <strong>aus</strong>.</li>
+        <li>Ein Bein von R<sub>1</sub> aus dem Feld ziehen und zwei Reihen weiter in ein
+        <em>freies</em> Feld stecken. Jetzt ist der Ast offen — es gibt eine Lücke.</li>
+        <li>Diese Lücke mit dem Amperemeter überbrücken: ein Kabel in die Reihe des Knotens,
+        das andere in die Reihe des verschobenen Widerstandsbeins.</li>
+        <li>Netzgerät <strong>ein</strong>, Wert ablesen, notieren, Netzgerät <strong>aus</strong>.</li>
+      </ol>
+
+      <p><strong>Messung I<sub>2</sub></strong>: genauso, nur am Ast von R<sub>2</sub>.
+      R<sub>1</sub> vorher wieder korrekt einstecken.</p>
+
+      <p><strong>Messung I (gesamt)</strong>: beide Widerstände korrekt eingesteckt lassen und
+      stattdessen <em>die Zuleitung</em> vom Netzgerät auftrennen — das Amperemeter kommt zwischen
+      Pluspol des Netzgeräts und die Reihe, in der sich der Strom auf die beiden Äste teilt.</p>
+
+      <div class="formel">
+        Probe (Knotenregel): &nbsp; I₁ + I₂ = I
+      </div>
+      <p>Wenn deine drei Messwerte diese Gleichung erfüllen (ein paar Prozent Abweichung sind
+      normal), hast du richtig gemessen. Wenn nicht, hast du höchstwahrscheinlich eine Messstelle
+      an der falschen Seite des Knotens — dann fließt entweder zu viel oder zu wenig durch dein
+      Gerät.</p>
+
+      <div class="merk"><strong>Kontrolle der Größenordnung:</strong> Bei 6,0&nbsp;V erwartest du
+      im 100-Ω-Ast rund 60&nbsp;mA, im 220-Ω-Ast rund 27&nbsp;mA und in der Zuleitung rund
+      87&nbsp;mA. Zeigt dein Gerät <code>0</code>, ist die Leitung noch offen; zeigt es
+      <code>OL</code> oder nichts, steckt das Kabel in der falschen Buchse.</div>
+
+      <div class="warn">Alle Werte bleiben unter 200&nbsp;mA — die <code>mA</code>-Buchse hält das
+      aus. Stecke das Kabel trotzdem nie in die <code>10A</code>-Buchse und drehe nicht am
+      Netzgerät hoch.</div>
+    </div>
+  </details>
+</section>
+
+<div class="foot">
+  <a class="zurueck" href="index.html">&larr; Zur Materialübersicht</a>
+  <span class="hint">Wenn dir auch nach Stufe&nbsp;3 etwas unklar bleibt, ruf mich — Messen lernt
+  man am Gerät, nicht am Handy.</span>
+  <span class="hint"><a href="impressum.html" style="color:#64748b">Impressum</a> &middot;
+  <a href="datenschutz.html" style="color:#64748b">Datenschutz</a></span>
+</div>
+
+</div>
+</body>
+</html>
