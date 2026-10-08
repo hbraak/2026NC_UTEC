@@ -15,6 +15,11 @@
   header .sub{color:#64748b;font-size:.95em}
   .intro{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;
          padding:14px 16px;margin-bottom:22px;font-size:.94em;color:#78350f}
+  .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .nav a{flex:1 1 220px;text-align:center;background:#fff;border:2px solid #e2e8f0;border-radius:10px;
+         padding:12px 6px;text-decoration:none;color:#475569;font-weight:600;font-size:.88em;
+         min-height:48px;display:flex;align-items:center;justify-content:center}
+  .nav a:hover{border-color:#1d4ed8;color:#1d4ed8}
   section{background:#fff;border-radius:15px;padding:20px;margin-bottom:20px;
           box-shadow:0 2px 10px rgba(0,0,0,.08);scroll-margin-top:16px;
           border:2px solid transparent;transition:border-color .3s,box-shadow .3s}
@@ -75,6 +80,154 @@
   den Aufbau. Vor dem Umstecken gilt immer: <strong>Netzgerät aus.</strong>
 </div>
 
+<div class="nav">
+  <a href="#a2">Teil 2 &middot; Spannung messen</a>
+  <a href="#a3">Teil 3 &middot; Strom messen</a>
+</div>
+
+<!-- ================= TEIL 2 ================= -->
+<section id="a2">
+  <h2>Teil 2 — Wie messe ich die Spannung an R<sub>1</sub> und an R<sub>2</sub>?</h2>
+  <div class="frage">Reihenschaltung: Du brauchst U<sub>1</sub>, U<sub>2</sub> und U über beide zusammen. Wohin kommt das Voltmeter — und was heißt „umstecken“?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Spannung ist kein „Durchfluss“, sondern ein <strong>Unterschied zwischen zwei
+      Punkten</strong> — so wie ein Höhenunterschied. Deshalb fragt das Voltmeter immer:
+      <em>zwischen welchen beiden Punkten?</em></p>
+      <p>Daraus folgt: Das Voltmeter wird <strong>nicht eingebaut</strong>. Du trennst nichts auf,
+      du steckst nichts um am Aufbau. Du hältst es einfach an zwei Punkte — genau links und rechts
+      von dem Bauteil, dessen Spannung du wissen willst.</p>
+      <p>Überleg jetzt für U<sub>1</sub>: Welche zwei Punkte begrenzen R<sub>1</sub>? Und für U
+      über beide Widerstände zusammen: Welche zwei Punkte sind das dann?</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Regel und Messstellen</span></summary>
+    <div class="inhalt">
+      <div class="merk">
+        <strong>Voltmeter: parallel</strong> — links und rechts an das Bauteil, Schaltung bleibt
+        unverändert.<br>
+        <strong>Amperemeter: in Reihe</strong> — Leitung auftrennen, Gerät in die Lücke.
+      </div>
+
+      <p>„Umstecken“ heißt hier also nur: <strong>die beiden Messkabel an andere Punkte setzen</strong>
+      — der Aufbau selbst bleibt, wie er ist.</p>
+
+      <div class="bild">
+      <svg viewBox="0 0 330 162" role="img" aria-label="Reihenschaltung aus R1 und R2 mit drei Spannungsmessstellen">
+        <g stroke="#1e293b" stroke-width="2" fill="none" stroke-linecap="round">
+          <!-- Rahmen -->
+          <path d="M25 35 H110"/>
+          <path d="M152 35 H200"/>
+          <path d="M242 35 H295"/>
+          <path d="M295 35 V150"/>
+          <path d="M25 150 H295"/>
+          <!-- Quelle links -->
+          <path d="M25 35 V72"/>
+          <path d="M25 113 V150"/>
+          <path d="M12 80 H38"/>
+          <path d="M16 93 H34" stroke-width="4"/>
+          <path d="M25 72 V80"/>
+          <path d="M25 93 V113"/>
+          <!-- Widerstände -->
+          <rect x="110" y="23" width="42" height="24" fill="#fff"/>
+          <rect x="200" y="23" width="42" height="24" fill="#fff"/>
+        </g>
+        <g fill="#1e293b" font-family="Segoe UI,sans-serif" font-size="12">
+          <text x="44" y="90">6,0 V</text>
+          <text x="118" y="17">R₁</text>
+          <text x="208" y="17">R₂</text>
+        </g>
+        <!-- Messklammern: Voltmeter parallel zum Bauteil -->
+        <g stroke="#dc2626" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M104 35 V70 H158 V35"/>
+          <path d="M194 35 V70 H248 V35"/>
+          <path d="M88 35 V115 H264 V35" stroke-dasharray="5 4"/>
+        </g>
+        <g stroke="#dc2626" stroke-width="2.2" fill="#fff">
+          <circle cx="131" cy="70" r="11"/>
+          <circle cx="221" cy="70" r="11"/>
+          <circle cx="176" cy="115" r="11"/>
+        </g>
+        <g fill="#dc2626" font-family="Segoe UI,sans-serif" font-size="12" font-weight="700" text-anchor="middle">
+          <text x="131" y="74.3">1</text>
+          <text x="221" y="74.3">2</text>
+          <text x="176" y="119.3">3</text>
+        </g>
+        <g fill="#dc2626" font-family="Segoe UI,sans-serif" font-size="11" text-anchor="middle">
+          <text x="131" y="93">U₁</text>
+          <text x="221" y="93">U₂</text>
+          <text x="176" y="138">U</text>
+        </g>
+      </svg>
+      <div class="legende">Drei Messstellen für dasselbe Voltmeter — nur die Kabelenden wandern.</div>
+      </div>
+
+      <ul>
+        <li><strong>① U<sub>1</sub>:</strong> ein Kabel links von R<sub>1</sub>, eines rechts von
+        R<sub>1</sub>.</li>
+        <li><strong>② U<sub>2</sub>:</strong> beide Kabel um R<sub>2</sub> herum.</li>
+        <li><strong>③ U über beide:</strong> ein Kabel links von R<sub>1</sub>, das andere rechts
+        von R<sub>2</sub> — der eine Punkt bleibt also stehen, nur das zweite Kabel wandert weiter.</li>
+      </ul>
+
+      <div class="merk"><strong>Buchsen am Multimeter:</strong> Rotes Kabel in
+      <code>V&Omega;</code>, schwarzes in <code>COM</code>, Drehschalter auf <code>V</code>
+      (Gleichspannung). Das ist eine <em>andere</em> Buchse als beim Strommessen.</div>
+
+      <div class="warn"><strong>Die eine gefährliche Verwechslung:</strong> Wenn das rote Kabel
+      noch in der <code>mA</code>-Buchse steckt und du das Gerät parallel an einen Widerstand
+      hältst, baust du einen <strong>Kurzschluss</strong> — die Sicherung im Multimeter ist dann
+      hin. Also vor jeder Spannungsmessung: Steckt das Kabel in <code>V&Omega;</code>?</div>
+
+      <p><strong>Und in der Parallelschaltung (Teil 3)?</strong> Dasselbe Vorgehen — nur ist das
+      Ergebnis dort langweilig: An R<sub>1</sub> und an R<sub>2</sub> misst du fast denselben Wert,
+      nämlich die volle Quellspannung. Genau das ist das Kennzeichen der Parallelschaltung.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Schritt für Schritt und Kontrolle</span></summary>
+    <div class="inhalt">
+      <p>Die Reihenfolge, die am wenigsten Umsteckerei kostet:</p>
+      <ol>
+        <li>Schwarzes Kabel links von R<sub>1</sub> anklemmen und <strong>dort lassen</strong>.</li>
+        <li>Rotes Kabel zwischen R<sub>1</sub> und R<sub>2</sub> → das ist U<sub>1</sub>.
+        Ablesen und notieren.</li>
+        <li>Rotes Kabel weiter nach rechts hinter R<sub>2</sub> → das ist jetzt U über beide
+        Widerstände. Ablesen.</li>
+        <li>Für U<sub>2</sub> das schwarze Kabel vom linken Punkt in die Mitte holen (zwischen
+        R<sub>1</sub> und R<sub>2</sub>), rot bleibt rechts. Ablesen.</li>
+        <li>Netzgerät aus, bevor ihr am Aufbau selbst etwas ändert.</li>
+      </ol>
+
+      <div class="formel">
+        Probe (Maschenregel): &nbsp; U₁ + U₂ = U
+      </div>
+
+      <div class="merk"><strong>Kontrolle der Größenordnung:</strong> Bei 6,0&nbsp;V an
+      100&nbsp;Ω&nbsp;+&nbsp;220&nbsp;Ω erwartest du rund <strong>1,9&nbsp;V</strong> an
+      R<sub>1</sub> und rund <strong>4,1&nbsp;V</strong> an R<sub>2</sub>. Der <em>größere</em>
+      Widerstand bekommt die <em>größere</em> Spannung ab — beide führen ja denselben Strom.
+      Abweichungen von ein paar Prozent sind normal (Widerstände haben ±5&nbsp;%, Goldring).</div>
+
+      <p><strong>Wenn etwas nicht stimmt:</strong></p>
+      <ul>
+        <li>Anzeige <strong>0&nbsp;V</strong> an einem Widerstand: Beide Kabel hängen
+        wahrscheinlich am selben Knoten — zwischen zwei Punkten derselben Steckbrettreihe ist kein
+        Unterschied messbar.</li>
+        <li>Anzeige <strong>negativ</strong> (Minuszeichen): Rot und Schwarz sind vertauscht. Kein
+        Fehler und keine Gefahr — Betrag ablesen oder Kabel tauschen.</li>
+        <li>Anzeige fast <strong>6&nbsp;V an einem einzelnen Widerstand</strong>: Dann liegt
+        irgendwo eine Unterbrechung, und du misst in Wahrheit über die Lücke.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
 <!-- ================= TEIL 3 ================= -->
 <section id="a3">
   <h2>Teil 3 — Wo baue ich das Amperemeter ein?</h2>
@@ -109,11 +262,11 @@
       <p>In der Parallelschaltung gibt es deshalb <strong>drei verschiedene Messstellen</strong>:</p>
 
       <div class="bild">
-      <svg viewBox="0 0 330 185" role="img" aria-label="Parallelschaltung mit drei Messstellen">
+      <svg viewBox="0 0 330 162" role="img" aria-label="Parallelschaltung mit drei Messstellen">
         <g stroke="#1e293b" stroke-width="2" fill="none" stroke-linecap="round">
           <!-- Rahmen -->
-          <path d="M25 35 H295"/>
-          <path d="M25 150 H295"/>
+          <path d="M25 35 H270"/>
+          <path d="M25 150 H270"/>
           <!-- Quelle links -->
           <path d="M25 35 V72"/>
           <path d="M25 113 V150"/>
