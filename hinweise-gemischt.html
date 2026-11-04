@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilfen: Gemischte Schaltung, Knoten und Masche | UTEC 11NC</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#1e293b;
+       line-height:1.6;padding:16px 14px 60px;-webkit-text-size-adjust:100%}
+  .wrap{max-width:680px;margin:0 auto}
+  header{background:#fff;border-radius:15px;padding:22px 20px;margin-bottom:18px;
+         box-shadow:0 2px 10px rgba(0,0,0,.08);text-align:center}
+  header h1{font-size:1.3em;color:#1d4ed8;margin-bottom:6px;line-height:1.3}
+  header .sub{color:#64748b;font-size:.95em}
+  .intro{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:8px;
+         padding:14px 16px;margin-bottom:22px;font-size:.94em;color:#78350f}
+  .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+  .nav a{flex:1 1 200px;text-align:center;background:#fff;border:2px solid #e2e8f0;border-radius:10px;
+         padding:12px 6px;text-decoration:none;color:#475569;font-weight:600;font-size:.88em;
+         min-height:48px;display:flex;align-items:center;justify-content:center}
+  .nav a:hover{border-color:#1d4ed8;color:#1d4ed8}
+  section{background:#fff;border-radius:15px;padding:20px;margin-bottom:20px;
+          box-shadow:0 2px 10px rgba(0,0,0,.08);scroll-margin-top:16px;
+          border:2px solid transparent;transition:border-color .3s,box-shadow .3s}
+  section:target{border-color:#1d4ed8;box-shadow:0 4px 18px rgba(29,78,216,.22)}
+  section h2{font-size:1.1em;color:#1d4ed8;margin-bottom:4px;line-height:1.35}
+  section .frage{color:#64748b;font-size:.92em;margin-bottom:14px;font-style:italic}
+  details{border:1px solid #e2e8f0;border-radius:10px;margin-bottom:10px;overflow:hidden}
+  details[open]{border-color:#93c5fd}
+  summary{cursor:pointer;padding:13px 14px;font-weight:600;font-size:.95em;background:#f5f8ff;
+          list-style:none;display:flex;align-items:center;gap:10px;min-height:48px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"\25B8";color:#1d4ed8;font-size:1.1em;transition:transform .2s;flex:0 0 auto}
+  details[open] summary::before{transform:rotate(90deg)}
+  .stufe{display:inline-block;background:#dbeafe;color:#1e40af;border-radius:20px;
+         padding:2px 10px;font-size:.78em;font-weight:700;flex:0 0 auto}
+  .stufe.s2{background:#e0f2fe;color:#0369a1}
+  .stufe.s3{background:#dcfce7;color:#15803d}
+  .txt{flex:1 1 auto;min-width:0}
+  .inhalt{padding:4px 16px 16px;font-size:.95em;border-top:1px solid #f1f5f9}
+  .inhalt p{margin-top:10px}
+  .inhalt ul,.inhalt ol{margin:10px 0 0 20px}
+  .inhalt li{margin-bottom:6px}
+  .formel{background:#f8fafc;border-radius:8px;padding:11px 12px;margin:10px 0;
+          overflow-x:auto;line-height:1.9;font-size:.98em}
+  .merk{background:#eff6ff;border-left:4px solid #1d4ed8;border-radius:8px;
+        padding:10px 12px;margin:12px 0;font-size:.93em}
+  .warn{background:#fef2f2;border-left:4px solid #dc2626;border-radius:8px;
+        padding:10px 12px;margin:12px 0;font-size:.93em;color:#7f1d1d}
+  .ok{background:#f0fdf4;border-left:4px solid #16a34a;border-radius:8px;
+      padding:10px 12px;margin:12px 0;font-size:.93em;color:#14532d}
+  .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+  table{border-collapse:collapse;width:100%;font-size:.86em}
+  th,td{border:1px solid #e2e8f0;padding:6px 6px;text-align:center}
+  th{background:#f8fafc;font-weight:600}
+  td.lbl,th.lbl{text-align:left;background:#f8fafc;font-weight:600}
+  td.l,th.l{text-align:left}
+  .bild{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin:12px 0}
+  .bild svg{width:100%;height:auto;display:block}
+  .bild .legende{font-size:.86em;color:#64748b;margin-top:8px;text-align:center}
+  code{background:#f1f5f9;border-radius:4px;padding:1px 5px;font-size:.92em;
+       font-family:'Consolas',Menlo,monospace;word-break:break-word}
+  .foot{text-align:center;margin-top:26px}
+  .foot a.zurueck{display:inline-block;background:#1d4ed8;color:#fff;text-decoration:none;
+          border-radius:10px;padding:14px 24px;font-weight:600;font-size:.95em;min-height:48px}
+  .foot .hint{display:block;margin-top:14px;color:#64748b;font-size:.88em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Gemischte Schaltung &middot; Knotenregel und Maschenregel</h1>
+  <div class="sub">Gestufte Hilfen &middot; UTEC 11NC &middot; 05.11.2026</div>
+</header>
+
+<div class="intro">
+  <strong>So nutzt du diese Seite:</strong> Öffne immer nur die <em>nächste</em> Stufe — und erst,
+  wenn du selbst nicht weiterkommst. <strong>Stufe&nbsp;1</strong> gibt einen Anstoß,
+  <strong>Stufe&nbsp;2</strong> zeigt Regel und Rechenweg, <strong>Stufe&nbsp;3</strong> rechnet
+  den Weg an einem Beispiel durch. Vor dem Umstecken gilt immer:
+  <strong>Netzgerät aus.</strong>
+</div>
+
+<div class="nav">
+  <a href="#a2">Teil 2 &middot; Schaltung zerlegen</a>
+  <a href="#a4">Teil 4 &middot; Fehler diagnostizieren</a>
+  <a href="#a5">Teil 5 &middot; Ergebnisse</a>
+</div>
+
+<!-- ================= TEIL 2 ================= -->
+<section id="a2">
+  <h2>Teil 2 — Wie zerlege ich eine gemischte Schaltung?</h2>
+  <div class="frage">R<sub>1</sub> in Reihe, dahinter R<sub>2</sub> parallel zu R<sub>3</sub>. Womit fange ich an — und warum geht R = U/I hier nicht einfach direkt?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß</span></summary>
+    <div class="inhalt">
+      <p>Du kennst schon alles, was du brauchst — nur nicht für die ganze Schaltung auf einmal.
+      Du kennst die Reihenschaltung, und du kennst die Parallelschaltung. In der gemischten
+      Schaltung stecken beide drin, aber <strong>nacheinander</strong>.</p>
+      <p>Fahr mit dem Finger den Weg vom Pluspol ab. Zuerst geht es ein einziges Stück weit —
+      da gibt es keine Wahl. Dann teilt sich der Weg in zwei Äste, und danach läuft alles wieder
+      zusammen.</p>
+      <p>Die Idee: <strong>Fass die beiden Äste gedanklich zu einem einzigen Bauteil zusammen.</strong>
+      Dann hast du nur noch zwei Bauteile hintereinander — also eine schlichte Reihenschaltung,
+      und die kannst du.</p>
+      <div class="merk">Faustregel: <strong>Von innen nach außen rechnen.</strong> Erst die
+      Verzweigung zusammenfassen, dann die Reihe. Beim Aufteilen der Spannungen und Ströme geht
+      es dann umgekehrt wieder von außen nach innen.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Regel und Rechenweg in Schritten</span></summary>
+    <div class="inhalt">
+      <div class="bild">
+      <svg viewBox="0 0 340 170" role="img" aria-label="Gemischte Schaltung: R1 in Reihe, dahinter R2 parallel R3">
+        <g stroke="#1e293b" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M25 30 H120"/>
+          <path d="M162 30 H230"/>
+          <path d="M25 155 H310"/>
+          <path d="M25 30 V67"/>
+          <path d="M25 108 V155"/>
+          <path d="M12 75 H38"/>
+          <path d="M16 88 H34" stroke-width="4"/>
+          <path d="M25 67 V75"/>
+          <path d="M25 88 V108"/>
+          <rect x="120" y="18" width="42" height="24" fill="#fff"/>
+          <path d="M230 30 H310"/>
+          <path d="M230 30 V70"/>
+          <path d="M230 111 V155"/>
+          <rect x="216" y="70" width="28" height="41" fill="#fff"/>
+          <path d="M310 30 V70"/>
+          <path d="M310 111 V155"/>
+          <rect x="296" y="70" width="28" height="41" fill="#fff"/>
+        </g>
+        <g fill="#1e293b">
+          <circle cx="230" cy="30" r="3.2"/>
+          <circle cx="230" cy="155" r="3.2"/>
+        </g>
+        <g fill="#1e293b" font-family="Segoe UI,sans-serif" font-size="12">
+          <text x="44" y="85">6,0 V</text>
+          <text x="128" y="12">R&#8321;</text>
+          <text x="250" y="95">R&#8322;</text>
+          <text x="330" y="95">R&#8323;</text>
+        </g>
+        <g stroke="#1d4ed8" stroke-width="1.6" fill="none" stroke-dasharray="5 4">
+          <rect x="202" y="14" width="136" height="150" rx="10"/>
+        </g>
+        <g fill="#1d4ed8" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700">
+          <text x="206" y="10">R&#8322;&#8323; — zusammenfassen</text>
+        </g>
+      </svg>
+      <div class="legende">Alles im blauen Kasten wird zu <strong>einem</strong> Ersatzwiderstand
+      R<sub>23</sub>. Danach: nur noch R<sub>1</sub> und R<sub>23</sub> in Reihe.</div>
+      </div>
+
+      <div class="merk">
+        <strong>Reihe:</strong> gleicher Strom, Spannungen addieren sich &nbsp;→&nbsp;
+        R<sub>ges</sub> = R<sub>1</sub> + R<sub>2</sub>, &nbsp; U = U<sub>1</sub> + U<sub>2</sub><br>
+        <strong>Parallel:</strong> gleiche Spannung, Ströme addieren sich &nbsp;→&nbsp;
+        R<sub>ges</sub> = (R<sub>1</sub>·R<sub>2</sub>)/(R<sub>1</sub>+R<sub>2</sub>), &nbsp;
+        I = I<sub>1</sub> + I<sub>2</sub>
+      </div>
+
+      <p><strong>Die fünf Schritte — in dieser Reihenfolge:</strong></p>
+      <ol>
+        <li><strong>Verzweigung zusammenfassen:</strong> R<sub>23</sub> aus R<sub>2</sub> und
+        R<sub>3</sub> berechnen (Parallelformel).</li>
+        <li><strong>Gesamtwiderstand:</strong> R<sub>ges</sub> = R<sub>1</sub> + R<sub>23</sub>
+        (jetzt ist es eine Reihenschaltung aus zwei Teilen).</li>
+        <li><strong>Gesamtstrom:</strong> I = U / R<sub>ges</sub>. Dieser Strom fließt durch
+        R<sub>1</sub> — denn dort gibt es keinen anderen Weg.</li>
+        <li><strong>Teilspannungen:</strong> U<sub>1</sub> = I · R<sub>1</sub>, und
+        U<sub>23</sub> = U − U<sub>1</sub> (Maschenregel). Kontrolle:
+        U<sub>23</sub> = I · R<sub>23</sub> muss dasselbe ergeben.</li>
+        <li><strong>Zweigströme:</strong> Beide Äste liegen an derselben Spannung U<sub>23</sub>!
+        Also I<sub>2</sub> = U<sub>23</sub> / R<sub>2</sub> und
+        I<sub>3</sub> = U<sub>23</sub> / R<sub>3</sub>. Kontrolle mit der Knotenregel:
+        I<sub>2</sub> + I<sub>3</sub> = I.</li>
+      </ol>
+
+      <div class="warn"><strong>Die drei häufigsten Fehler:</strong>
+      <ul>
+        <li>Alle drei Widerstände einfach addieren. R<sub>2</sub> und R<sub>3</sub> liegen
+        <em>nicht</em> hintereinander.</li>
+        <li>Die volle Quellspannung in den Parallelteil einsetzen. An R<sub>2</sub> und
+        R<sub>3</sub> liegen nur U<sub>23</sub>, nicht 6,0&nbsp;V — ein Teil bleibt an
+        R<sub>1</sub>.</li>
+        <li>Milliampere und Ampere mischen. In R = U/I <strong>immer</strong> in Ampere rechnen:
+        24&nbsp;mA = 0,024&nbsp;A.</li>
+      </ul></div>
+
+      <div class="ok"><strong>Plausibilitätsprüfung, die immer funktioniert:</strong> Der
+      Ersatzwiderstand einer Parallelschaltung ist <em>kleiner als der kleinste</em> der beiden
+      Einzelwiderstände. Kommt bei 220&nbsp;Ω parallel 470&nbsp;Ω etwas über 220&nbsp;Ω heraus,
+      hast du dich verrechnet.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Rechnung durchgerechnet und Kontrollwerte</span></summary>
+    <div class="inhalt">
+      <p>Hier die Schaltung aus Teil 2 komplett — vergleiche nur die Werte, der Weg steht in
+      Stufe&nbsp;2. Gegeben: R<sub>1</sub> = 100&nbsp;Ω, R<sub>2</sub> = 220&nbsp;Ω,
+      R<sub>3</sub> = 470&nbsp;Ω, U = 6,0&nbsp;V.</p>
+
+      <div class="formel">
+        R₂₃ = (220 · 470) / (220 + 470) = 103 400 / 690 ≈ <strong>149,9 Ω</strong><br>
+        R<sub>ges</sub> = 100 + 149,9 ≈ <strong>249,9 Ω</strong><br>
+        I = 6,0 V / 249,9 Ω ≈ 0,0240 A = <strong>24,0 mA</strong><br>
+        U₁ = 0,0240 A · 100 Ω ≈ <strong>2,40 V</strong><br>
+        U₂₃ = 6,0 V − 2,40 V ≈ <strong>3,60 V</strong><br>
+        I₂ = 3,60 V / 220 Ω ≈ <strong>16,4 mA</strong><br>
+        I₃ = 3,60 V / 470 Ω ≈ <strong>7,7 mA</strong>
+      </div>
+
+      <div class="ok"><strong>Beide Proben gehen auf:</strong><br>
+      Masche: 2,40&nbsp;V + 3,60&nbsp;V = 6,0&nbsp;V = U &nbsp;✓<br>
+      Knoten: 16,4&nbsp;mA + 7,7&nbsp;mA ≈ 24,1&nbsp;mA ≈ I &nbsp;✓ (die 0,1&nbsp;mA sind
+      Rundung, kein Fehler)</div>
+
+      <p><strong>Warum fließt durch R<sub>2</sub> mehr Strom als durch R<sub>3</sub>?</strong>
+      Weil an beiden <em>dieselbe</em> Spannung liegt und R<sub>2</sub> der kleinere Widerstand
+      ist. Der kleinere Widerstand nimmt den größeren Stromanteil. Das Verhältnis
+      16,4&nbsp;:&nbsp;7,7 ist dasselbe wie 470&nbsp;:&nbsp;220 — nur umgekehrt.</p>
+
+      <div class="merk"><strong>Was du beim Messen erwarten kannst:</strong> Abweichungen von
+      einigen Prozent sind normal — die Widerstände haben ±5&nbsp;% Toleranz (Goldring), und das
+      Amperemeter hat selbst einen kleinen Widerstand. Wenn deine Messung dagegen um den
+      <em>Faktor</em> 2 oder mehr abweicht, ist die Schaltung falsch gesteckt, nicht die Rechnung
+      falsch.</div>
+    </div>
+  </details>
+</section>
+
+<!-- ================= TEIL 4 ================= -->
+<section id="a4">
+  <h2>Teil 4 — Diagnose: Gerät falsch angeschlossen oder Schaltung falsch gesteckt?</h2>
+  <div class="frage">Du stehst an einer fremden Schaltung und sollst den eingebauten Fehler finden. Wie gehst du systematisch vor, statt zu raten?</div>
+
+  <details>
+    <summary><span class="stufe">Stufe 1</span><span class="txt">Anstoß: erst schauen, dann einschalten</span></summary>
+    <div class="inhalt">
+      <p>Ein Profi schaltet nicht als Erstes ein. Er vergleicht erst den Aufbau mit dem
+      Schaltplan — <strong>mit den Augen, Finger am Draht</strong>. Dafür reichen drei Fragen:</p>
+      <ol>
+        <li><strong>Gibt es genau einen Strompfad bis zur Verzweigung?</strong> R<sub>1</sub> muss
+        allein in Reihe liegen.</li>
+        <li><strong>Liegen R<sub>2</sub> und R<sub>3</sub> wirklich zwischen denselben zwei
+        Knoten?</strong> Beide Bauteile müssen links am gleichen Punkt und rechts am gleichen
+        Punkt hängen. Wenn R<sub>3</sub> hinter R<sub>2</sub> hängt, ist es Reihe, nicht parallel.</li>
+        <li><strong>Steckt irgendwo ein Kabel, das im Schaltplan nicht vorkommt?</strong> Eine
+        zusätzliche Brücke über ein Bauteil ist der am leichtesten zu übersehende Fehler.</li>
+      </ol>
+      <p>Und dann die beiden Fragen zu den Messgeräten: Ist das Amperemeter
+      <strong>in</strong> die Leitung eingebaut (nicht danebengehängt)? Ist das Voltmeter
+      <strong>daneben</strong>gehängt (nicht eingebaut)?</p>
+      <div class="merk">Notiere deine Vermutung <em>bevor</em> du einschaltest. Danach prüfst du
+      sie — das ist der ganze Trick. Wer zuerst einschaltet, lässt sich von der Anzeige
+      in die Irre führen.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s2">Stufe 2</span><span class="txt">Die beiden Fehlerfamilien unterscheiden</span></summary>
+    <div class="inhalt">
+      <p>Jeder Fehler gehört in eine von zwei Familien — und die unterscheiden sich im Symptom:</p>
+
+      <div class="merk"><strong>Familie 1: Das Messgerät ist falsch angeschlossen.</strong>
+      Die Schaltung selbst stimmt. Typisch: die Anzeige ist unsinnig (0, OL, viel zu groß oder
+      viel zu klein), aber die Bauteile sind dort, wo sie hingehören. Prüfe:
+      Buchse (<code>mA</code> oder <code>V&Omega;</code>), Drehschalter, in Reihe oder parallel.</div>
+
+      <div class="warn"><strong>Familie 2: Die Schaltung ist falsch gesteckt.</strong>
+      Die Geräte sind richtig angeschlossen und zeigen eine <em>plausible</em> Zahl — sie ist
+      nur die falsche. Diese Fehler erkennst du <strong>nur</strong>, indem du die Anzeige mit
+      deiner Rechnung aus Teil 2 vergleichst. Deshalb ist Teil 2 vor dem Aufbau dran.</div>
+
+      <p><strong>Erwartungswerte für die korrekte Schaltung</strong> (R<sub>1</sub>=100,
+      R<sub>2</sub>=220, R<sub>3</sub>=470, 6,0&nbsp;V) — das ist dein Maßstab:</p>
+      <div class="formel">
+        I ≈ 24 mA &nbsp;&middot;&nbsp; U₁ ≈ 2,4 V &nbsp;&middot;&nbsp; U₂₃ ≈ 3,6 V
+        &nbsp;&middot;&nbsp; I₂ ≈ 16 mA &nbsp;&middot;&nbsp; I₃ ≈ 8 mA
+      </div>
+
+      <div class="scroll">
+      <table>
+        <tr><th class="l">Was du siehst</th><th class="l">Das spricht für …</th></tr>
+        <tr>
+          <td class="l">Amperemeter zeigt <code>0</code>, nichts wird warm, Voltmeter zeigt
+          an einer Stelle fast die volle Quellspannung</td>
+          <td class="l">Eine <strong>Unterbrechung</strong>. Du misst über die Lücke — dort
+          liegt die ganze Spannung, weil kein Strom fließt.</td>
+        </tr>
+        <tr>
+          <td class="l">Gesamtstrom <strong>deutlich zu groß</strong> (z.&nbsp;B. 40&nbsp;mA
+          statt 24&nbsp;mA), U₁ passt nicht zur Erwartung</td>
+          <td class="l">Ein Widerstand ist <strong>überbrückt</strong> (Brücke parallel dazu) —
+          oder ein Messgerät liegt niederohmig parallel, wo es nicht hingehört.</td>
+        </tr>
+        <tr>
+          <td class="l">Gesamtstrom <strong>zu klein</strong> (z.&nbsp;B. 7–8&nbsp;mA statt
+          24&nbsp;mA), alle Bauteile sichtbar vorhanden</td>
+          <td class="l">Die Verzweigung fehlt: R<sub>3</sub> liegt <strong>in Reihe</strong>
+          statt parallel. Dann ist R<sub>ges</sub> ≈ 790&nbsp;Ω statt 250&nbsp;Ω.</td>
+        </tr>
+        <tr>
+          <td class="l">Ein Zweig scheint zu stecken, aber der Gesamtstrom ist nur
+          ≈&nbsp;19&nbsp;mA</td>
+          <td class="l">Der Zweig von R<sub>3</sub> ist <strong>offen</strong> — es wirkt nur
+          R<sub>1</sub> + R<sub>2</sub> = 320&nbsp;Ω. Das Kabel sieht gesteckt aus, ist es aber
+          nicht.</td>
+        </tr>
+        <tr>
+          <td class="l">Multimeter zeigt beim Strommessen <code>0</code> oder <code>OL</code>,
+          Drehschalter steht aber auf mA</td>
+          <td class="l">Das rote Kabel steckt in der <strong>falschen Buchse</strong>
+          (<code>V&Omega;</code> statt <code>mA</code>).</td>
+        </tr>
+        <tr>
+          <td class="l">Multimeter im Spannungsbereich, aber in die Leitung
+          <strong>eingebaut</strong>; alle Ströme nahe <code>0</code></td>
+          <td class="l">Voltmeter in Reihe. Es ist hochohmig und bremst den ganzen Strompfad
+          aus — die Schaltung tut fast nichts mehr.</td>
+        </tr>
+      </table>
+      </div>
+
+      <div class="warn">Der eine Fehler, der wirklich etwas kaputt macht:
+      <strong>Amperemeter parallel</strong> zu einem Bauteil. Es ist fast ein Kurzschluss, und
+      die Sicherung im Multimeter löst aus. Dass heute nichts passiert, liegt nur daran, dass
+      R<sub>1</sub> = 100&nbsp;Ω immer in Reihe zur Quelle bleibt und den Strom auf höchstens
+      60&nbsp;mA begrenzt. <strong>Deshalb bleibt R<sub>1</sub> dort — ohne Ausnahme.</strong></div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Stufe 3</span><span class="txt">Messreihenfolge, die den Fehler eingrenzt</span></summary>
+    <div class="inhalt">
+      <p>Wenn du nach dem Hinsehen noch nichts gefunden hast, miss in dieser Reihenfolge — jeder
+      Schritt halbiert die Möglichkeiten:</p>
+      <ol>
+        <li><strong>U an der Quelle.</strong> Sind es 6,0&nbsp;V? Wenn nicht, ist der Fehler
+        schon davor (Netzgerät, Zuleitung) und du brauchst nicht weiterzusuchen.</li>
+        <li><strong>U<sub>1</sub> an R<sub>1</sub>.</strong> Daraus folgt sofort der Gesamtstrom:
+        I = U<sub>1</sub> / 100&nbsp;Ω. Erwartung ≈ 2,4&nbsp;V, also 24&nbsp;mA.
+        Zu groß → irgendwo ist der Widerstand kleiner als gedacht (Brücke, Kurzschluss).
+        Zu klein → irgendwo ist er größer (Reihe statt parallel, Unterbrechung).</li>
+        <li><strong>U<sub>23</sub> am Parallelteil.</strong> U<sub>1</sub> + U<sub>23</sub> muss
+        6,0&nbsp;V ergeben. Fehlt etwas, liegt ein Teil der Spannung an einer Stelle, die im
+        Plan nicht vorkommt — also an einer Lücke oder an einem eingebauten Messgerät.</li>
+        <li><strong>U an R<sub>2</sub> und an R<sub>3</sub> einzeln.</strong> Sind beide gleich?
+        Dann liegen sie wirklich parallel. Sind sie verschieden, ist die Verzweigung keine
+        Verzweigung — der klassische „parallel ist nicht parallel"-Fehler.</li>
+        <li>Erst zum Schluss die <strong>Zweigströme</strong> messen (dafür musst du auftrennen,
+        das ist die meiste Arbeit).</li>
+      </ol>
+
+      <div class="ok"><strong>Durchgangsprüfung ohne Strom</strong> ist oft schneller als jede
+      Messung unter Spannung: Netzgerät aus, Multimeter auf Durchgang bzw. Ω, und dann prüfen,
+      ob zwei Punkte, die verbunden sein <em>sollen</em>, tatsächlich verbunden sind. So findest
+      du jedes lose Kabel in Sekunden.</div>
+
+      <p><strong>Wenn du den Fehler gefunden hast:</strong> Formuliere ihn in drei Teilen —
+      <em>Symptom</em> (was war zu sehen), <em>Ursache</em> (was war falsch gesteckt),
+      <em>richtig wäre</em> (wie es hingehört). Genau diese drei Teile brauchst du in der
+      Tabelle und in Teil&nbsp;6. Reparieren darf aber nur das Team, dem die Schaltung
+      gehört — sagt ihm eure Diagnose, baut nicht selbst um.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ================= TEIL 5 ================= -->
+<section id="a5">
+  <h2>Teil 5 — Ergebnisse zur Selbstkontrolle</h2>
+  <div class="frage">Nur die Zahlen, nicht der Weg. Erst nachsehen, wenn du fertig gerechnet hast — sonst lernst du nichts dabei.</div>
+
+  <details>
+    <summary><span class="stufe s3">Aufgabe 1</span><span class="txt">100 Ω in Reihe zu 330 Ω ‖ 330 Ω an 9,0 V</span></summary>
+    <div class="inhalt">
+      <div class="formel">
+        R₂₃ ≈ <strong>165 Ω</strong> &nbsp;&middot;&nbsp; R<sub>ges</sub> ≈ <strong>265 Ω</strong><br>
+        I ≈ <strong>34,0 mA</strong><br>
+        U₁ ≈ <strong>3,40 V</strong> &nbsp;&middot;&nbsp; U₂₃ ≈ <strong>5,60 V</strong><br>
+        I₂ = I₃ ≈ <strong>17,0 mA</strong>
+      </div>
+      <div class="merk">Zwei <em>gleiche</em> Widerstände parallel ergeben immer die
+      <strong>Hälfte</strong> des Einzelwerts — 330/2 = 165. Und die beiden Zweigströme müssen
+      dann gleich groß sein, jeder die Hälfte von I.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Aufgabe 2</span><span class="txt">Widerstände aus Messwerten bestimmen</span></summary>
+    <div class="inhalt">
+      <div class="formel">
+        U₂₃ = <strong>7,5 V</strong> &nbsp;(Maschenregel)<br>
+        I₃ = <strong>12 mA</strong> &nbsp;(Knotenregel)<br>
+        R₁ = <strong>150 Ω</strong> &nbsp;&middot;&nbsp; R₂ ≈ <strong>417 Ω</strong>
+        &nbsp;&middot;&nbsp; R₃ = <strong>625 Ω</strong>
+      </div>
+      <div class="merk">Der Weg in einem Satz: Die zwei fehlenden Messwerte holst du aus den
+      beiden Regeln, danach ist jeder Widerstand nur noch R = U/I mit der Spannung
+      <em>an ihm</em> und dem Strom <em>durch ihn</em>. Achte auf Ampere: 18&nbsp;mA = 0,018&nbsp;A.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Aufgabe 3</span><span class="txt">Bauteil mit 5,0 V an 9,0 V betreiben</span></summary>
+    <div class="inhalt">
+      <div class="formel">
+        U an R₁ = <strong>4,0 V</strong> &nbsp;&middot;&nbsp; I = <strong>40 mA</strong>
+        &nbsp;&middot;&nbsp; R<sub>Bauteil</sub> = <strong>125 Ω</strong>
+      </div>
+      <div class="merk">Das ist genau die Schaltung, mit der man eine LED oder ein 5-V-Bauteil
+      an einer zu großen Quelle betreibt: Der Vorwiderstand „frisst" die überschüssige Spannung.
+      Durch beide fließt derselbe Strom, weil sie in Reihe liegen.</div>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="stufe s3">Knobelaufgabe</span><span class="txt">Spannungsteiler unter Last</span></summary>
+    <div class="inhalt">
+      <div class="formel">
+        a) U<sub>ab</sub> = <strong>2,70 V</strong><br>
+        b) unterer Teil parallel 220 Ω ≈ 126,9 Ω &nbsp;→&nbsp;
+        U<sub>ab</sub> ≈ <strong>1,38 V</strong>
+      </div>
+      <div class="merk">c) Der Verbraucher liegt parallel zum unteren Teil und macht dessen
+      Widerstand kleiner — damit verschiebt sich das Teilerverhältnis, die Abgriffspannung
+      bricht ein. Weniger stark passiert das, wenn der Verbraucherwiderstand <em>groß</em> gegen
+      den Teiler ist, man also einen Teiler mit kleineren Widerständen wählt. Der Preis dafür:
+      mehr Querstrom und mehr Wärme.</div>
+    </div>
+  </details>
+</section>
+
+<div class="foot">
+  <a class="zurueck" href="index.html">&larr; Zur Materialübersicht</a>
+  <span class="hint">Wenn dir auch nach Stufe&nbsp;3 etwas unklar bleibt, ruf mich — Messen und
+  Fehlersuchen lernt man am Gerät, nicht am Handy.</span>
+  <span class="hint"><a href="impressum.html" style="color:#64748b">Impressum</a> &middot;
+  <a href="datenschutz.html" style="color:#64748b">Datenschutz</a></span>
+</div>
+
+</div>
+</body>
+</html>
